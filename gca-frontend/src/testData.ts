@@ -57,13 +57,7 @@ const client5: Client = {
     userId: 202
 };
 
-export const clients: { client: Client }[] = [
-    { client: client1 },
-    { client: client2 },
-    { client: client3 },
-    { client: client4 },
-    { client: client5 }
-];
+export const clients: Client[] = [client1, client2, client3, client4, client5];
 
 export const policie1: Policy = {
     id: 1,
@@ -125,11 +119,11 @@ export const policie6: Policy = {
     userId: client1.id
 };
 
-export const policiesTest: { policy: Policy }[] = [
-    { policy: policie1 },
-    { policy: policie2 },
-    { policy: policie3 },
-    { policy: policie4 },
-    { policy: policie5 },
-    { policy: policie6 }
+export const policiesTest: Policy[] = [
+    policie1,
+    policie2,
+    policie3,
+    policie4,
+    policie5,
+    policie6
 ];
