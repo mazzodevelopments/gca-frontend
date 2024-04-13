@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import ClientPage from './pages/ClientPage/ClientPage';
 import { clientLoader } from './pages/ClientPage/clientLoader';
 import ClientAddPage from './pages/ClientAddPage';
+import { AuthProvider } from './context/AuthContext';
 
 const router = createBrowserRouter([
     {
@@ -24,5 +25,9 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-    return <RouterProvider router={router} />;
+    return (
+        <AuthProvider>
+            <RouterProvider router={router} />;
+        </AuthProvider>
+    );
 }
