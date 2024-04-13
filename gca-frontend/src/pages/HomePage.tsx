@@ -6,7 +6,7 @@ import ClientSearch from '../components/ClientSearch';
 import { addButton, mainDiv, mainH1 } from '../styleClassNames';
 
 export default function HomePage() {
-    const { username } = useContext(AuthContext);
+    const { username, logout } = useContext(AuthContext);
 
     return (
         <div className={mainDiv}>
@@ -22,6 +22,14 @@ export default function HomePage() {
                     </Link>
                 </div>
                 <ClientSearch />
+                <div className="flex justify-center">
+                    <button
+                        onClick={logout}
+                        className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-lg"
+                    >
+                        Logout
+                    </button>
+                </div>
             </div>
         </div>
     );
