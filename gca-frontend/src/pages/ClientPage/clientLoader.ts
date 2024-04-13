@@ -1,25 +1,16 @@
 import type { Params } from 'react-router-dom';
 import type { Client } from '../../types/client';
+import { Policy } from '../../types/policy';
+// TEST
+import { client1, policiesTest } from '../../testData';
 
 interface LoaderArgs {
     params: Params;
 }
 
-// test
-const client1: Client = {
-    id: 1,
-    name: 'John',
-    lastName: 'Doe',
-    address: '123 Main St',
-    birthDay: new Date('1990-01-01'),
-    phone: '+1234567890',
-    country: 'USA',
-    userId: 123
-};
-
 export interface ClientLoaderResults {
     client: Client;
-    // name: string;
+    policies: Policy[];
 }
 
 export async function clientLoader({
@@ -31,7 +22,7 @@ export async function clientLoader({
         throw new Error('Name must be provided');
     }
 
-    return { client: client1 };
+    return { client: client1, policies: policiesTest };
 }
 
 // EN ESTE LOADER VOY A TENER QUE RECIBIR EL ID DEL CLIENTE POR PARAMETRO

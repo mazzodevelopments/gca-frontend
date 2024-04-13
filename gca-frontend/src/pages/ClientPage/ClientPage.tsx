@@ -10,12 +10,9 @@ import {
     listH1,
     addButton
 } from '../../styleClassNames';
-//test
-import { policiesTest } from '../../testData';
-//
 
 export default function ClientPage() {
-    const { client } = useLoaderData() as ClientLoaderResults;
+    const { client, policies } = useLoaderData() as ClientLoaderResults;
 
     const { name, lastName, address, birthDay, phone, country } = client;
 
@@ -57,7 +54,7 @@ export default function ClientPage() {
                         Agregar Poliza
                     </Link>
                 </div>
-                <PolizaList policies={policiesTest} />
+                <PolizaList policies={policies} />
             </div>
         </div>
     );

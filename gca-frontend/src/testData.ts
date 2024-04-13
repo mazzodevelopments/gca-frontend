@@ -2,7 +2,7 @@ import type { Client } from './types/client';
 import { Policy } from './types/policy';
 
 // CLIENT
-const client1: Client = {
+export const client1: Client = {
     id: 1,
     name: 'John',
     lastName: 'Doe',
