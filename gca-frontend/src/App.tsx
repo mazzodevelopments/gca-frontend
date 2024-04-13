@@ -6,6 +6,8 @@ import ClientPage from './pages/ClientPage/ClientPage';
 import { clientLoader } from './pages/ClientPage/clientLoader';
 import ClientAddPage from './pages/ClientAddPage';
 import { AuthProvider } from './context/AuthContext';
+import { policyLoader } from './pages/PolicyPage/policyLoader';
+import { PolicyPage } from './pages/PolicyPage/PolicyPage';
 
 const router = createBrowserRouter([
     {
@@ -14,11 +16,16 @@ const router = createBrowserRouter([
         children: [
             { path: 'login', element: <LoginPage /> },
             {
-                path: 'client/:id',
+                path: 'client/:clientId',
                 element: <ClientPage />,
                 loader: clientLoader
             },
             { path: 'client-add', element: <ClientAddPage /> },
+            {
+                path: 'client/:clientId/policy/:policyId',
+                element: <PolicyPage />,
+                loader: policyLoader
+            },
             { path: '/', element: <HomePage /> }
         ]
     }

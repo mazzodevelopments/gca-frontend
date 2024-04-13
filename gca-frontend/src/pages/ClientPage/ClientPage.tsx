@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import { ClientLoaderResults } from './clientLoader';
-import PolizaList from '../../components/PolicyList';
+import PolicyList from '../../components/PolicyList';
 import {
     containerDiv,
     mainH1,
@@ -54,7 +54,7 @@ export default function ClientPage() {
                         Agregar Poliza
                     </Link>
                 </div>
-                <PolizaList policies={policies} />
+                <PolicyList clientId={client.id} policies={policies} />
             </div>
         </div>
     );

@@ -16,9 +16,9 @@ export interface ClientLoaderResults {
 export async function clientLoader({
     params
 }: LoaderArgs): Promise<ClientLoaderResults> {
-    const { id } = params;
+    const { clientId } = params;
 
-    if (!id) {
+    if (!clientId) {
         throw new Error('Name must be provided');
     }
 
