@@ -11,15 +11,12 @@ export default function LoginPage() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Verificamos si el usuario y la contraseña no están vacíos
         if (!user || !password) {
             setError(
                 'Por favor ingrese un nombre de usuario y una contraseña.'
             );
             return;
         }
-
-        // Realizamos el inicio de sesión
         try {
             login(user, password);
         } catch (e) {
