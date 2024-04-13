@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import { PolicyLoaderResults } from './policyLoader';
 import { containerDiv, listDiv, listH1, mainH1 } from '../../styleClassNames';
 
-export function PolicyPage() {
+export default function PolicyPage() {
     const { policy } = useLoaderData() as PolicyLoaderResults;
     const { startDate, endDate, productName, branchName, companyName } = policy;
     return (

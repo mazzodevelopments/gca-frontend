@@ -3,11 +3,11 @@ import Root from './pages/Root';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import ClientPage from './pages/ClientPage/ClientPage';
-import { clientLoader } from './pages/ClientPage/clientLoader';
 import ClientAddPage from './pages/ClientAddPage';
+import PolicyPage from './pages/PolicyPage/PolicyPage';
 import { AuthProvider } from './context/AuthContext';
+import { clientLoader } from './pages/ClientPage/clientLoader';
 import { policyLoader } from './pages/PolicyPage/policyLoader';
-import { PolicyPage } from './pages/PolicyPage/PolicyPage';
 
 const router = createBrowserRouter([
     {
