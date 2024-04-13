@@ -59,7 +59,7 @@ const client5: Client = {
 
 export const clients: Client[] = [client1, client2, client3, client4, client5];
 
-export const policie1: Policy = {
+export const policy1: Policy = {
     id: 1,
     startDate: new Date('1982-03-10'),
     endDate: new Date('1982-04-10'),
@@ -69,7 +69,7 @@ export const policie1: Policy = {
     userId: client1.id
 };
 
-export const policie2: Policy = {
+export const policy2: Policy = {
     id: 2,
     startDate: new Date('2005-08-20'),
     endDate: new Date('2006-08-20'),
@@ -79,7 +79,7 @@ export const policie2: Policy = {
     userId: client1.id
 };
 
-export const policie3: Policy = {
+export const policy3: Policy = {
     id: 3,
     startDate: new Date('2010-12-05'),
     endDate: new Date('2011-12-05'),
@@ -89,7 +89,7 @@ export const policie3: Policy = {
     userId: client1.id
 };
 
-export const policie4: Policy = {
+export const policy4: Policy = {
     id: 4,
     startDate: new Date('2018-06-15'),
     endDate: new Date('2023-06-15'),
@@ -99,7 +99,7 @@ export const policie4: Policy = {
     userId: client1.id
 };
 
-export const policie5: Policy = {
+export const policy5: Policy = {
     id: 5,
     startDate: new Date('2023-01-01'),
     endDate: new Date('2024-01-01'),
@@ -109,7 +109,7 @@ export const policie5: Policy = {
     userId: client1.id
 };
 
-export const policie6: Policy = {
+export const policy6: Policy = {
     id: 6,
     startDate: new Date('2015-03-10'),
     endDate: new Date('2015-04-10'),
@@ -120,10 +120,10 @@ export const policie6: Policy = {
 };
 
 export const policiesTest: Policy[] = [
-    policie1,
-    policie2,
-    policie3,
-    policie4,
-    policie5,
-    policie6
+    policy1,
+    policy2,
+    policy3,
+    policy4,
+    policy5,
+    policy6
 ];
