@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { mainDiv, mainH1 } from '../styleClassNames';
+import { AuthContext } from '../context/AuthContext';
 
 export default function LoginPage() {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+
+    const { login } = useContext(AuthContext);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // Verificamos si el usuario y la contraseña no están vacíos
+        if (!user || !password) {
+            setError(
+                'Por favor ingrese un nombre de usuario y una contraseña.'
+            );
+            return;
+        }
+
+        // Realizamos el inicio de sesión
+        try {
+            login(user, password);
+        } catch (e) {
+            setError('Error');
+        }
     };
 
     return (
@@ -54,6 +72,7 @@ export default function LoginPage() {
                     >
                         Iniciar Sesión
                     </button>
+                    {error && <p>{error}</p>}
                 </form>
             </div>
         </div>

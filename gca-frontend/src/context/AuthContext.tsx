@@ -3,13 +3,13 @@ import React, { createContext, useState, PropsWithChildren } from 'react';
 interface AuthContextType {
     isLoggedIn: boolean;
     username: string;
-    login: (username: string) => void;
+    login: (username: string, password: string) => void;
     logout: () => void;
 }
 
 const initialAuthContext: AuthContextType = {
-    isLoggedIn: true,
-    username: 'Toto',
+    isLoggedIn: false,
+    username: '',
     login: () => {},
     logout: () => {}
 };
@@ -20,9 +20,13 @@ const AuthProvider: React.FC<PropsWithChildren<object>> = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [username, setUsername] = useState<string>('');
 
-    const login = (username: string) => {
-        setIsLoggedIn(true);
-        setUsername(username);
+    const login = (username: string, password: string) => {
+        if (username === 'toto' && password === 'toto') {
+            setIsLoggedIn(true);
+            setUsername(username);
+        } else {
+            throw new Error('No existe ese usuario');
+        }
     };
 
     const logout = () => {
