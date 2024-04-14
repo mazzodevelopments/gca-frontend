@@ -1,14 +1,32 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { PolicyLoaderResults } from './policyLoader';
-import { containerDiv, listDiv, listH1, mainH1 } from '../../styleClassNames';
+import {
+    containerDiv,
+    listDiv,
+    listH1,
+    mainH1,
+    actionButton
+} from '../../styleClassNames';
 
 export default function PolicyPage() {
     const { policy } = useLoaderData() as PolicyLoaderResults;
     const { startDate, endDate, productName, branchName, companyName } = policy;
+    const navigate = useNavigate();
+
     return (
         <div className={containerDiv}>
             <div>
-                <h1 className={mainH1}>Poliza</h1>
+                <div className="flex justify-between items-center">
+                    <h1 className={mainH1}>Poliza</h1>
+                    <button
+                        className={actionButton}
+                        onClick={() =>
+                            navigate(`${window.location.pathname}/edit`)
+                        }
+                    >
+                        Editar Poliza
+                    </button>
+                </div>
                 <div className={listDiv}>
                     <h1 className={listH1}>Fecha de inicio:</h1>
                     <span className="font-medium">

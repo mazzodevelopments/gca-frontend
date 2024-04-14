@@ -8,7 +8,7 @@ import {
     mainH1,
     listDiv,
     listH1,
-    addButton
+    actionButton
 } from '../../styleClassNames';
 
 export default function ClientPage() {
@@ -50,7 +50,7 @@ export default function ClientPage() {
             <div>
                 <div className="flex justify-between items-center mb-4 border-t">
                     <h1 className={`${mainH1} mt-4`}>Polizas</h1>
-                    <Link to={`/policy-add`} className={`${addButton} mt-4`}>
+                    <Link to={`/policy-add`} className={`${actionButton} mt-4`}>
                         Agregar Poliza
                     </Link>
                 </div>
