@@ -1,4 +1,4 @@
-import { containerDiv, mainDiv, mainH1 } from '../styleClassNames';
+import { containerDiv, mainDiv, mainH1 } from '../../styleClassNames';
 
 export default function ClientAddPage() {
     return (
