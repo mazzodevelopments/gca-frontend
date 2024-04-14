@@ -11,6 +11,7 @@ import PolicyEditPage from './pages/PolicyPage/PolicyEditPage';
 import { AuthProvider } from './context/AuthContext';
 import { clientLoader } from './pages/ClientPage/clientLoader';
 import { policyLoader } from './pages/PolicyPage/policyLoader';
+import PolicyAddPage from './pages/PolicyPage/PolicyAddPage';
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                 path: 'client/:clientId/policy/:policyId/edit',
                 element: <PolicyEditPage />,
                 loader: policyLoader
+            },
+            {
+                path: 'client/:clientId/policy-add',
+                element: <PolicyAddPage />
             },
             { path: '/', element: <HomePage /> }
         ]

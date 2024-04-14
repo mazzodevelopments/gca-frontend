@@ -7,3 +7,12 @@ export interface Policy {
     companyName: string;
     clientId: number;
 }
+
+export interface AddablePolicy {
+    startDate: Date;
+    endDate: Date;
+    productName: string;
+    branchName: string;
+    companyName: string;
+    clientId: number;
+}

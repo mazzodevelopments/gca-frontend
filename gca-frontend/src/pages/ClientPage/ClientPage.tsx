@@ -14,7 +14,7 @@ import {
 export default function ClientPage() {
     const { client, policies } = useLoaderData() as ClientLoaderResults;
 
-    const { name, lastName, address, birthDay, phone, country } = client;
+    const { id, name, lastName, address, birthDay, phone, country } = client;
 
     return (
         <div className={containerDiv}>
@@ -50,7 +50,10 @@ export default function ClientPage() {
             <div>
                 <div className="flex justify-between items-center mb-4 border-t">
                     <h1 className={`${mainH1} mt-4`}>Polizas</h1>
-                    <Link to={`/policy-add`} className={`${actionButton} mt-4`}>
+                    <Link
+                        to={`/client/${id}/policy-add`}
+                        className={`${actionButton} mt-4`}
+                    >
                         Agregar Poliza
                     </Link>
                 </div>
