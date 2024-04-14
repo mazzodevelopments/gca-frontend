@@ -5,5 +5,5 @@ export interface Policy {
     productName: string;
     branchName: string;
     companyName: string;
-    userId: number;
+    clientId: number;
 }

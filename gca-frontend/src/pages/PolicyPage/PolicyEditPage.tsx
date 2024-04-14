@@ -36,7 +36,9 @@ export default function PolicyEditPage() {
         e.preventDefault();
         try {
             await updatePolicy(editedPolicy);
-            navigate('/policy');
+            navigate(
+                `/client/${editedPolicy.clientId}/policy/${editedPolicy.id}`
+            );
         } catch (error) {
             console.error('Error updating policy:', error);
         }
