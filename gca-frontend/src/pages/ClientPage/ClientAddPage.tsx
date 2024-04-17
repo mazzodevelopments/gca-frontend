@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createClient } from './clientService'; // Supongo que tienes esta función para crear clientes
+import { createClient } from './clientService';
 import {
     containerDiv,
     input,
@@ -11,28 +11,19 @@ import {
     actionButton
 } from '../../styleClassNames';
 import { AuthContext } from '../../context/AuthContext';
-
-interface NewClient {
-    name: string;
-    lastName: string;
-    address: string;
-    birthDay: Date;
-    phone: string;
-    country: string;
-    userId: number;
-}
+import { AddableClient } from '../../types/client';
 
 export default function ClientAddPage() {
     const { userId } = useContext(AuthContext);
 
-    const [newClient, setNewClient] = useState<NewClient>({
+    const [newClient, setNewClient] = useState<AddableClient>({
         name: '',
         lastName: '',
         address: '',
         birthDay: new Date(),
         phone: '',
         country: '',
-        userId: userId // Ajusta este valor según tu lógica de usuario
+        userId
     });
 
     const navigate = useNavigate();
@@ -49,7 +40,6 @@ export default function ClientAddPage() {
         e.preventDefault();
         try {
             const newClientId = await createClient(newClient);
-            // Redirigir a la página de detalles del cliente, por ejemplo
             navigate(`/client/${newClientId}`);
         } catch (error) {
             console.error('Error creating client:', error);
