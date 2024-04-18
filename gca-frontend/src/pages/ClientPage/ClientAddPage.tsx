@@ -12,6 +12,7 @@ import {
 } from '../../styleClassNames';
 import { AuthContext } from '../../context/AuthContext';
 import { AddableClient } from '../../types/client';
+import { countries } from '../../utils/countries';
 
 export default function ClientAddPage() {
     const { userId } = useContext(AuthContext);
@@ -28,7 +29,9 @@ export default function ClientAddPage() {
 
     const navigate = useNavigate();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
         const { name, value } = e.target;
         setNewClient((prevClient) => ({
             ...prevClient,
@@ -109,13 +112,19 @@ export default function ClientAddPage() {
                     </div>
                     <div className={inputDiv}>
                         <label className={listH1}>País:</label>
-                        <input
-                            type="text"
+                        <select
                             name="country"
                             value={newClient.country}
                             onChange={handleChange}
                             className={input}
-                        />
+                        >
+                            <option value="">Seleccione un país</option>
+                            {countries.map((country) => (
+                                <option key={country} value={country}>
+                                    {country}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div className="flex justify-center">
                         <button className={actionButton} type="submit">
