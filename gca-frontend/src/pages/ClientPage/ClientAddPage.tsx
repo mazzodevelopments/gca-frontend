@@ -12,6 +12,7 @@ import {
 } from '../../styleClassNames';
 import { AuthContext } from '../../context/AuthContext';
 import { AddableClient } from '../../types/client';
+import Select from 'react-select';
 import { countries } from '../../utils/countries';
 
 export default function ClientAddPage() {
@@ -30,12 +31,11 @@ export default function ClientAddPage() {
     const navigate = useNavigate();
 
     const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+        selectedOption: { label: string; value: string } | null
     ) => {
-        const { name, value } = e.target;
         setNewClient((prevClient) => ({
             ...prevClient,
-            [name]: name === 'birthDay' ? new Date(value) : value
+            country: selectedOption ? selectedOption.value : ''
         }));
     };
 
@@ -49,6 +49,12 @@ export default function ClientAddPage() {
         }
     };
 
+    // CONVERT LIST TO REACT SELECT FORMAT
+    const countryOptions = countries.map((country) => ({
+        label: country,
+        value: country
+    }));
+
     return (
         <div className={mainDiv}>
             <div className={containerDiv}>
@@ -60,7 +66,12 @@ export default function ClientAddPage() {
                             type="text"
                             name="name"
                             value={newClient.name}
-                            onChange={handleChange}
+                            onChange={(e) =>
+                                setNewClient((prevClient) => ({
+                                    ...prevClient,
+                                    name: e.target.value
+                                }))
+                            }
                             className={input}
                         />
                     </div>
@@ -70,7 +81,12 @@ export default function ClientAddPage() {
                             type="text"
                             name="lastName"
                             value={newClient.lastName}
-                            onChange={handleChange}
+                            onChange={(e) =>
+                                setNewClient((prevClient) => ({
+                                    ...prevClient,
+                                    lastName: e.target.value
+                                }))
+                            }
                             className={input}
                         />
                     </div>
@@ -80,7 +96,12 @@ export default function ClientAddPage() {
                             type="text"
                             name="address"
                             value={newClient.address}
-                            onChange={handleChange}
+                            onChange={(e) =>
+                                setNewClient((prevClient) => ({
+                                    ...prevClient,
+                                    address: e.target.value
+                                }))
+                            }
                             className={input}
                         />
                     </div>
@@ -90,13 +111,14 @@ export default function ClientAddPage() {
                             type="date"
                             name="birthDay"
                             value={
-                                newClient.birthDay
-                                    ? newClient.birthDay
-                                          .toISOString()
-                                          .split('T')[0]
-                                    : ''
+                                newClient.birthDay.toISOString().split('T')[0]
                             }
-                            onChange={handleChange}
+                            onChange={(e) =>
+                                setNewClient((prevClient) => ({
+                                    ...prevClient,
+                                    birthDay: new Date(e.target.value)
+                                }))
+                            }
                             className={input}
                         />
                     </div>
@@ -106,25 +128,25 @@ export default function ClientAddPage() {
                             type="text"
                             name="phone"
                             value={newClient.phone}
-                            onChange={handleChange}
+                            onChange={(e) =>
+                                setNewClient((prevClient) => ({
+                                    ...prevClient,
+                                    phone: e.target.value
+                                }))
+                            }
                             className={input}
                         />
                     </div>
                     <div className={inputDiv}>
                         <label className={listH1}>País:</label>
-                        <select
-                            name="country"
-                            value={newClient.country}
+                        <Select
+                            value={countryOptions.find(
+                                (option) => option.value === newClient.country
+                            )}
+                            options={countryOptions}
                             onChange={handleChange}
                             className={input}
-                        >
-                            <option value="">Seleccione un país</option>
-                            {countries.map((country) => (
-                                <option key={country} value={country}>
-                                    {country}
-                                </option>
-                            ))}
-                        </select>
+                        />
                     </div>
                     <div className="flex justify-center">
                         <button className={actionButton} type="submit">
