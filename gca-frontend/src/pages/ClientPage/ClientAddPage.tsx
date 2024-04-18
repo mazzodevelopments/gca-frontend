@@ -58,7 +58,7 @@ export default function ClientAddPage() {
     return (
         <div className={mainDiv}>
             <div className={containerDiv}>
-                <h1 className={mainH1}>Agregar Cliente</h1>
+                <h1 className={`${mainH1} mb-4`}>Agregar Cliente</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className={inputDiv}>
                         <label className={listH1}>Nombre:</label>

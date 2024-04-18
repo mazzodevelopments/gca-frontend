@@ -11,11 +11,21 @@ import {
     listH1,
     mainH1
 } from '../../styleClassNames';
+import Select from 'react-select';
 
 // Datos de prueba para los dropdowns
-const products = ['Producto A', 'Producto B', 'Producto C'];
-const branches = ['Ramo X', 'Ramo Y', 'Ramo Z'];
-const companies = ['Compañía 1', 'Compañía 2', 'Compañía 3'];
+const products = ['Producto A', 'Producto B', 'Producto C'].map((product) => ({
+    label: product,
+    value: product
+}));
+const branches = ['Ramo X', 'Ramo Y', 'Ramo Z'].map((branch) => ({
+    label: branch,
+    value: branch
+}));
+const companies = ['Compañía 1', 'Compañía 2', 'Compañía 3'].map((company) => ({
+    label: company,
+    value: company
+}));
 
 export default function PolicyEditPage() {
     const { policy } = useLoaderData() as PolicyLoaderResults;
@@ -27,16 +37,12 @@ export default function PolicyEditPage() {
     }, [policy]);
 
     const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+        selectedOption: { label: string; value: string } | null,
+        name: string
     ) => {
-        const { name, value } = e.target;
-        const newValue =
-            name === 'startDate' || name === 'endDate'
-                ? new Date(value)
-                : value;
         setEditedPolicy((prevPolicy) => ({
             ...prevPolicy,
-            [name]: newValue
+            [name]: selectedOption ? selectedOption.value : ''
         }));
     };
 
@@ -62,13 +68,14 @@ export default function PolicyEditPage() {
                         type="date"
                         name="startDate"
                         value={
-                            editedPolicy.startDate instanceof Date
-                                ? editedPolicy.startDate
-                                      .toISOString()
-                                      .split('T')[0]
-                                : editedPolicy.startDate
+                            editedPolicy.startDate.toISOString().split('T')[0]
                         }
-                        onChange={handleChange}
+                        onChange={(e) =>
+                            setEditedPolicy((prevPolicy) => ({
+                                ...prevPolicy,
+                                startDate: new Date(e.target.value)
+                            }))
+                        }
                         className={input}
                     />
                 </div>
@@ -77,61 +84,56 @@ export default function PolicyEditPage() {
                     <input
                         type="date"
                         name="endDate"
-                        value={
-                            editedPolicy.endDate instanceof Date
-                                ? editedPolicy.endDate
-                                      .toISOString()
-                                      .split('T')[0]
-                                : editedPolicy.endDate
+                        value={editedPolicy.endDate.toISOString().split('T')[0]}
+                        onChange={(e) =>
+                            setEditedPolicy((prevPolicy) => ({
+                                ...prevPolicy,
+                                endDate: new Date(e.target.value)
+                            }))
                         }
-                        onChange={handleChange}
                         className={input}
                     />
                 </div>
                 <div className={inputDiv}>
                     <label className={listH1}>Nombre del producto:</label>
-                    <select
-                        name="productName"
-                        value={editedPolicy.productName}
-                        onChange={handleChange}
+                    <Select
+                        options={products}
+                        value={products.find(
+                            (option) =>
+                                option.value === editedPolicy.productName
+                        )}
+                        onChange={(selectedOption) =>
+                            handleChange(selectedOption, 'productName')
+                        }
                         className={input}
-                    >
-                        {products.map((product, index) => (
-                            <option key={index} value={product}>
-                                {product}
-                            </option>
-                        ))}
-                    </select>
+                    />
                 </div>
                 <div className={inputDiv}>
                     <label className={listH1}>Nombre del ramo:</label>
-                    <select
-                        name="branchName"
-                        value={editedPolicy.branchName}
-                        onChange={handleChange}
+                    <Select
+                        options={branches}
+                        value={branches.find(
+                            (option) => option.value === editedPolicy.branchName
+                        )}
+                        onChange={(selectedOption) =>
+                            handleChange(selectedOption, 'branchName')
+                        }
                         className={input}
-                    >
-                        {branches.map((branch, index) => (
-                            <option key={index} value={branch}>
-                                {branch}
-                            </option>
-                        ))}
-                    </select>
+                    />
                 </div>
                 <div className={inputDiv}>
                     <label className={listH1}>Nombre de la compañía:</label>
-                    <select
-                        name="companyName"
-                        value={editedPolicy.companyName}
-                        onChange={handleChange}
+                    <Select
+                        options={companies}
+                        value={companies.find(
+                            (option) =>
+                                option.value === editedPolicy.companyName
+                        )}
+                        onChange={(selectedOption) =>
+                            handleChange(selectedOption, 'companyName')
+                        }
                         className={input}
-                    >
-                        {companies.map((company, index) => (
-                            <option key={index} value={company}>
-                                {company}
-                            </option>
-                        ))}
-                    </select>
+                    />
                 </div>
                 <div className="flex justify-center">
                     <button className={actionButton} type="submit">

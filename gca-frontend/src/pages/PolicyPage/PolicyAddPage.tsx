@@ -10,11 +10,21 @@ import {
     listH1,
     mainH1
 } from '../../styleClassNames';
+import Select from 'react-select';
 
 // Datos de prueba para los dropdowns
-const products = ['Producto A', 'Producto B', 'Producto C'];
-const branches = ['Ramo X', 'Ramo Y', 'Ramo Z'];
-const companies = ['Compañía 1', 'Compañía 2', 'Compañía 3'];
+const products = ['Producto A', 'Producto B', 'Producto C'].map((product) => ({
+    label: product,
+    value: product
+}));
+const branches = ['Ramo X', 'Ramo Y', 'Ramo Z'].map((branch) => ({
+    label: branch,
+    value: branch
+}));
+const companies = ['Compañía 1', 'Compañía 2', 'Compañía 3'].map((company) => ({
+    label: company,
+    value: company
+}));
 
 export default function PolicyAddPage() {
     // OBTENER EL ID DEL CLIENTE DESDE PARAMS
@@ -34,15 +44,12 @@ export default function PolicyAddPage() {
     const navigate = useNavigate();
 
     const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+        selectedOption: { label: string; value: string } | null,
+        name: string
     ) => {
-        const { name, value } = e.target;
         setNewPolicy((prevPolicy) => ({
             ...prevPolicy,
-            [name]:
-                name === 'startDate' || name === 'endDate'
-                    ? new Date(value)
-                    : value
+            [name]: selectedOption ? selectedOption.value : ''
         }));
     };
 
@@ -65,14 +72,13 @@ export default function PolicyAddPage() {
                     <input
                         type="date"
                         name="startDate"
-                        value={
-                            newPolicy.startDate
-                                ? newPolicy.startDate
-                                      .toISOString()
-                                      .split('T')[0]
-                                : ''
+                        value={newPolicy.startDate.toISOString().split('T')[0]}
+                        onChange={(e) =>
+                            setNewPolicy((prevPolicy) => ({
+                                ...prevPolicy,
+                                startDate: new Date(e.target.value)
+                            }))
                         }
-                        onChange={handleChange}
                         className={input}
                     />
                 </div>
@@ -81,62 +87,54 @@ export default function PolicyAddPage() {
                     <input
                         type="date"
                         name="endDate"
-                        value={
-                            newPolicy.endDate
-                                ? newPolicy.endDate.toISOString().split('T')[0]
-                                : ''
+                        value={newPolicy.endDate.toISOString().split('T')[0]}
+                        onChange={(e) =>
+                            setNewPolicy((prevPolicy) => ({
+                                ...prevPolicy,
+                                endDate: new Date(e.target.value)
+                            }))
                         }
-                        onChange={handleChange}
                         className={input}
                     />
                 </div>
                 <div className={inputDiv}>
                     <label className={listH1}>Nombre del producto:</label>
-                    <select
-                        name="productName"
-                        value={newPolicy.productName}
-                        onChange={handleChange}
+                    <Select
+                        options={products}
+                        value={products.find(
+                            (option) => option.value === newPolicy.productName
+                        )}
+                        onChange={(selectedOption) =>
+                            handleChange(selectedOption, 'productName')
+                        }
                         className={input}
-                    >
-                        <option value="">Seleccionar producto</option>
-                        {products.map((product, index) => (
-                            <option key={index} value={product}>
-                                {product}
-                            </option>
-                        ))}
-                    </select>
+                    />
                 </div>
                 <div className={inputDiv}>
                     <label className={listH1}>Nombre del ramo:</label>
-                    <select
-                        name="branchName"
-                        value={newPolicy.branchName}
-                        onChange={handleChange}
+                    <Select
+                        options={branches}
+                        value={branches.find(
+                            (option) => option.value === newPolicy.branchName
+                        )}
+                        onChange={(selectedOption) =>
+                            handleChange(selectedOption, 'branchName')
+                        }
                         className={input}
-                    >
-                        <option value="">Seleccionar ramo</option>
-                        {branches.map((branch, index) => (
-                            <option key={index} value={branch}>
-                                {branch}
-                            </option>
-                        ))}
-                    </select>
+                    />
                 </div>
                 <div className={inputDiv}>
                     <label className={listH1}>Nombre de la compañía:</label>
-                    <select
-                        name="companyName"
-                        value={newPolicy.companyName}
-                        onChange={handleChange}
+                    <Select
+                        options={companies}
+                        value={companies.find(
+                            (option) => option.value === newPolicy.companyName
+                        )}
+                        onChange={(selectedOption) =>
+                            handleChange(selectedOption, 'companyName')
+                        }
                         className={input}
-                    >
-                        <option value="">Seleccionar compañía</option>
-                        {companies.map((company, index) => (
-                            <option key={index} value={company}>
-                                {company}
-                            </option>
-                        ))}
-                    </select>
+                    />
                 </div>
                 <div className="flex justify-center">
                     <button className={actionButton} type="submit">
