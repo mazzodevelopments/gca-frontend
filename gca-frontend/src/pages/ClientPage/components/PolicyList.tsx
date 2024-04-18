@@ -1,4 +1,4 @@
-import { Policy } from '../types/policy';
+import { Policy } from '../../../types/policy';
 import PolicyListItem from './PolicyListItem';
 
 interface PolicyListProps {

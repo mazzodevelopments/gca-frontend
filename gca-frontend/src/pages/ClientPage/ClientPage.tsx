@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import { ClientLoaderResults } from './clientLoader';
-import PolicyList from '../../components/PolicyList';
+import PolicyList from './components/PolicyList';
 import {
     containerDiv,
     mainH1,

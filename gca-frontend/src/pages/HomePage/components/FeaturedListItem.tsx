@@ -1,5 +1,5 @@
-import { listDiv } from '../styleClassNames';
-import type { Client } from '../types/client';
+import { listDiv } from '../../../styleClassNames';
+import type { Client } from '../../../types/client';
 
 interface FeaturedListItemProps {
     text: string;

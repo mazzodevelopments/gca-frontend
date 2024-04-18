@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { listButton, listDiv, listH1 } from '../styleClassNames';
-import type { Client } from '../types/client';
+import { listButton, listDiv, listH1 } from '../../../styleClassNames';
+import type { Client } from '../../../types/client';
 
 interface ClientListItemProps {
     client: Client;

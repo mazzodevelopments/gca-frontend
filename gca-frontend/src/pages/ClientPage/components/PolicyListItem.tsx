@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Policy } from '../types/policy';
-import { listDiv, listButton, listH1 } from '../styleClassNames';
+import { Policy } from '../../../types/policy';
+import { listDiv, listButton, listH1 } from '../../../styleClassNames';
 
 interface PolicyListItemProps {
     clientId: number;

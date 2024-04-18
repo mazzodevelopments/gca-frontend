@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import ClientList from './ClientList';
-import { Client } from '../types/client';
-import { clients } from '../testData';
+import ClientList from '../../ClientPage/components/ClientList';
+import { Client } from '../../../types/client';
+import { clients } from '../../../testData';
 import { GoSearch } from 'react-icons/go';
-import { mainH2 } from '../styleClassNames';
+import { mainH2 } from '../../../styleClassNames';
 
 export default function ClientSearch() {
     const [term, setTerm] = useState('');

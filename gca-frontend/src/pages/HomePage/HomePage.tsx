@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
-import FeaturedList from '../components/FeaturedList';
-import ClientSearch from '../components/ClientSearch';
-import { actionButton, mainDiv, mainH1 } from '../styleClassNames';
+import FeaturedList from './components/FeaturedList';
+import ClientSearch from './components/ClientSearch';
+import { actionButton, mainDiv, mainH1 } from '../../styleClassNames';
 
 export default function HomePage() {
     const { username, logout } = useContext(AuthContext);

@@ -1,4 +1,4 @@
-import { Client } from '../types/client';
+import { Client } from '../../../types/client';
 import ClientListItem from './ClientListItem';
 
 interface ClientListProps {
