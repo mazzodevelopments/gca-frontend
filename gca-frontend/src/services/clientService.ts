@@ -1,4 +1,4 @@
-import { AddableClient } from '../../types/client';
+import { AddableClient } from '../types/client';
 
 export const createClient = (client: AddableClient) => {
     console.log(client);

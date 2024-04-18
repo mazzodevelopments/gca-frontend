@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AddablePolicy } from '../../types/policy';
-import { createPolicy } from './policyService';
+import { createPolicy } from '../../services/policyService';
 import {
     actionButton,
     containerDiv,

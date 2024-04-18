@@ -1,4 +1,4 @@
-import { AddablePolicy, Policy } from '../../types/policy';
+import { AddablePolicy, Policy } from '../types/policy';
 
 export const updatePolicy = (editedPolicy: Policy) => {
     console.log(editedPolicy);

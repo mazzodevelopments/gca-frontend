@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { Policy } from '../../types/policy';
-import { updatePolicy } from './policyService';
+import { updatePolicy } from '../../services/policyService';
 import { PolicyLoaderResults } from './policyLoader';
 import {
     actionButton,
