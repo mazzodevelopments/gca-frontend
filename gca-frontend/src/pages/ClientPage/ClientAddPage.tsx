@@ -3,18 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { createClient } from '../../services/clientService';
 import {
     containerDiv,
-    input,
-    inputDiv,
-    listH1,
     mainDiv,
     mainH1,
     actionButton
 } from '../../styleClassNames';
 import { AuthContext } from '../../context/AuthContext';
 import { AddableClient } from '../../types/client';
-import Select from 'react-select';
 import { countries } from '../../utils/countries';
 import Input from '../../components/Input';
+import SelectInput from '../../components/SelectInput';
 
 export default function ClientAddPage() {
     const { userId } = useContext(AuthContext);
@@ -121,18 +118,17 @@ export default function ClientAddPage() {
                             }))
                         }
                     />
-                    <div className={inputDiv}>
-                        <label className={listH1}>País:</label>
-                        <Select
-                            value={countryOptions.find(
+                    <SelectInput
+                        label="País:"
+                        value={
+                            countryOptions.find(
                                 (option) => option.value === newClient.country
-                            )}
-                            name="country"
-                            options={countryOptions}
-                            onChange={handleChange}
-                            className={input}
-                        />
-                    </div>
+                            ) || null
+                        }
+                        name="country"
+                        options={countryOptions}
+                        onChange={handleChange}
+                    />
                     <div className="flex justify-center">
                         <button className={actionButton} type="submit">
                             Guardar cliente
