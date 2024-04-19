@@ -14,9 +14,6 @@ const actionButton =
 const mainH1 = 'text-2xl font-bold';
 const mainH2 = 'text-xl font-bold';
 
-const input = 'mt-1 p-2 border border-gray-300 rounded-md';
-const inputDiv = 'flex flex-col';
-
 export {
     containerDiv,
     mainDiv,
@@ -25,7 +22,5 @@ export {
     listH1,
     listDiv,
     listButton,
-    actionButton,
-    input,
-    inputDiv
+    actionButton
 };
