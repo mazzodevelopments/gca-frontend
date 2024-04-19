@@ -4,6 +4,7 @@ interface InputProps {
     label: string;
     type: string;
     name?: string;
+    id?: string;
     value: string;
     onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
     validationError?: string;
@@ -13,6 +14,7 @@ export default function Input({
     label,
     type,
     name,
+    id,
     value,
     onChange,
     validationError
@@ -22,8 +24,9 @@ export default function Input({
             <label className={listH1}>{label}</label>
             <input
                 type={type}
-                value={value}
                 name={name}
+                id={id}
+                value={value}
                 onChange={onChange}
                 className="mt-1 p-2 border border-gray-300 rounded-md"
             />
