@@ -1,29 +1,38 @@
+import Select, { ActionMeta } from 'react-select';
 import { listH1 } from '../styleClassNames';
 
-interface InputProps {
-    label: string;
-    type: string;
-    name?: string;
+interface CustomOptionType {
     value: string;
-    onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
+    label: string;
+}
+
+interface SelectInputProps {
+    label: string;
+    name?: string;
+    value: CustomOptionType | null;
+    options: CustomOptionType[];
+    onChange: (
+        newValue: CustomOptionType | null,
+        actionMeta: ActionMeta<CustomOptionType>
+    ) => void;
     validationError?: string;
 }
 
-export default function Input({
+export default function SelectInput({
     label,
-    type,
     name,
     value,
+    options,
     onChange,
     validationError
-}: InputProps) {
+}: SelectInputProps) {
     return (
         <div className="flex flex-col">
             <label className={listH1}>{label}</label>
-            <input
-                type={type}
+            <Select
                 value={value}
                 name={name}
+                options={options}
                 onChange={onChange}
                 className="mt-1 p-2 border border-gray-300 rounded-md"
             />
