@@ -9,7 +9,7 @@ export const client1: Client = {
     address: '123 Main St',
     birthDay: new Date('1990-01-01'),
     phone: '+1234567890',
-    country: 'USA',
+    country: 'Estados Unidos',
     userId: 123
 };
 
@@ -66,7 +66,7 @@ export const policy1: Policy = {
     productName: 'A todo riesgo',
     companyName: 'Sancor Seguros',
     branchName: '200',
-    userId: client1.id
+    clientId: client1.id
 };
 
 export const policy2: Policy = {
@@ -76,7 +76,7 @@ export const policy2: Policy = {
     productName: 'Seguro de vida',
     companyName: 'La Caja Seguros',
     branchName: '500',
-    userId: client1.id
+    clientId: client1.id
 };
 
 export const policy3: Policy = {
@@ -86,7 +86,7 @@ export const policy3: Policy = {
     productName: 'Seguro de automóvil',
     companyName: 'Provincia Seguros',
     branchName: '800',
-    userId: client1.id
+    clientId: client1.id
 };
 
 export const policy4: Policy = {
@@ -96,7 +96,7 @@ export const policy4: Policy = {
     productName: 'Seguro de hogar',
     companyName: 'Allianz',
     branchName: '300',
-    userId: client1.id
+    clientId: client1.id
 };
 
 export const policy5: Policy = {
@@ -106,7 +106,7 @@ export const policy5: Policy = {
     productName: 'Seguro de salud',
     companyName: 'Swiss Medical',
     branchName: '600',
-    userId: client1.id
+    clientId: client1.id
 };
 
 export const policy6: Policy = {
@@ -116,7 +116,7 @@ export const policy6: Policy = {
     productName: 'Seguro de viaje',
     companyName: 'Travel Ace Assistance',
     branchName: '700',
-    userId: client1.id
+    clientId: client1.id
 };
 
 export const policiesTest: Policy[] = [

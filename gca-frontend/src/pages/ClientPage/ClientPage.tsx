@@ -19,9 +19,17 @@ export default function ClientPage() {
     return (
         <div className={containerDiv}>
             <div>
-                <h1 className={mainH1}>
-                    {name} {lastName}
-                </h1>
+                <div className="flex justify-between items-center mb-4">
+                    <h1 className={mainH1}>
+                        {name} {lastName}
+                    </h1>
+                    <Link
+                        to={`/client/${id}/edit`}
+                        className={`${actionButton} mt-4`}
+                    >
+                        Editar Cliente
+                    </Link>
+                </div>
                 <div className={listDiv}>
                     <h1 className={listH1}>Dirección:</h1>
                     <span className="font-medium">
