@@ -26,7 +26,54 @@ export default function ClientAddPage() {
         userId
     });
 
+    const [validationErrors, setValidationErrors] = useState<
+        Record<string, string>
+    >({});
+
     const navigate = useNavigate();
+
+    // VALIDACIONES
+    const validateName = (name: string) => {
+        if (!name.trim()) {
+            return 'El nombre es requerido.';
+        }
+        return '';
+    };
+
+    const validateLastName = (lastName: string) => {
+        if (!lastName.trim()) {
+            return 'El apellido es requerido.';
+        }
+        return '';
+    };
+
+    const validateAddress = (address: string) => {
+        if (!address.trim()) {
+            return 'La dirección es requerida.';
+        }
+        return '';
+    };
+
+    const validateBirthDay = (birthDay: Date) => {
+        if (!birthDay) {
+            return 'La fecha de nacimiento es requerida.';
+        }
+        return '';
+    };
+
+    const validatePhone = (phone: string) => {
+        if (!phone.trim()) {
+            return 'El teléfono es requerido.';
+        }
+        return '';
+    };
+
+    const validateCountry = (country: string) => {
+        if (!country) {
+            return 'Por favor selecciona un país';
+        }
+        return '';
+    };
 
     const handleChange = (
         selectedOption: { label: string; value: string } | null
@@ -39,6 +86,22 @@ export default function ClientAddPage() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // VALIDAR LOS CAMPOS ANTES DE CREAR NUEVO CLIENTE
+        const errors: Record<string, string> = {};
+        errors.name = validateName(newClient.name);
+        errors.lastName = validateLastName(newClient.lastName);
+        errors.address = validateAddress(newClient.address);
+        errors.birthDay = validateBirthDay(newClient.birthDay);
+        errors.phone = validatePhone(newClient.phone);
+        errors.country = validateCountry(newClient.country);
+        // VERIFICAR SI HAY ERRORES
+        const hasErrors = Object.values(errors).some((error) => error !== '');
+        if (hasErrors) {
+            // SI HAY ERRORES AGREGAR AL STATE
+            setValidationErrors(errors);
+            return;
+        }
+
         try {
             const newClientId = await createClient(newClient);
             navigate(`/client/${newClientId}`);
@@ -47,7 +110,7 @@ export default function ClientAddPage() {
         }
     };
 
-    // CONVERT LIST TO REACT SELECT FORMAT
+    // Convertir lista de países a formato React Select
     const countryOptions = countries.map((country) => ({
         label: country,
         value: country
@@ -69,6 +132,7 @@ export default function ClientAddPage() {
                                 name: e.target.value
                             }))
                         }
+                        validationError={validationErrors.name}
                     />
                     <Input
                         label="Apellido:"
@@ -81,6 +145,7 @@ export default function ClientAddPage() {
                                 lastName: e.target.value
                             }))
                         }
+                        validationError={validationErrors.lastName}
                     />
                     <Input
                         label="Dirección:"
@@ -93,6 +158,7 @@ export default function ClientAddPage() {
                                 address: e.target.value
                             }))
                         }
+                        validationError={validationErrors.address}
                     />
                     <Input
                         label="Fecha de nacimiento:"
@@ -105,6 +171,7 @@ export default function ClientAddPage() {
                                 birthDay: new Date(e.target.value)
                             }))
                         }
+                        validationError={validationErrors.birthDay}
                     />
                     <Input
                         label="Teléfono:"
@@ -117,6 +184,7 @@ export default function ClientAddPage() {
                                 phone: e.target.value
                             }))
                         }
+                        validationError={validationErrors.phone}
                     />
                     <SelectInput
                         label="País:"
@@ -128,6 +196,7 @@ export default function ClientAddPage() {
                         name="country"
                         options={countryOptions}
                         onChange={handleChange}
+                        validationError={validationErrors.country}
                     />
                     <div className="flex justify-center">
                         <button className={actionButton} type="submit">
