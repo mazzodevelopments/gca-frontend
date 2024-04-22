@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { PolicyLoaderResults } from './policyLoader';
 import {
     containerDiv,
@@ -7,9 +7,10 @@ import {
     mainH1,
     actionButton
 } from '../../styleClassNames';
+import useData from '../../hooks/use-data';
 
 export default function PolicyPage() {
-    const { policy } = useLoaderData() as PolicyLoaderResults;
+    const { policy } = useData<PolicyLoaderResults>();
     const { startDate, endDate, productName, branchName, companyName } = policy;
     const navigate = useNavigate();
 

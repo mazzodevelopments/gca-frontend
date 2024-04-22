@@ -1,6 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
 import { ClientLoaderResults } from './clientLoader';
 import PolicyList from './components/PolicyList';
 import {
@@ -10,9 +8,10 @@ import {
     listH1,
     actionButton
 } from '../../styleClassNames';
+import useData from '../../hooks/use-data';
 
 export default function ClientPage() {
-    const { client, policies } = useLoaderData() as ClientLoaderResults;
+    const { client, policies } = useData<ClientLoaderResults>();
 
     const { id, name, lastName, address, birthDay, phone, country } = client;
 
@@ -25,7 +24,7 @@ export default function ClientPage() {
                     </h1>
                     <Link
                         to={`/client/${id}/edit`}
-                        className={`${actionButton} mt-4`}
+                        className={`${actionButton}`}
                     >
                         Editar Cliente
                     </Link>

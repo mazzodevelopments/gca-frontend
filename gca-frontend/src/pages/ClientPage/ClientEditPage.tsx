@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ClientLoaderResults } from './clientLoader';
 import { Client } from '../../types/client';
 import { updateClient } from '../../services/clientService';
@@ -12,9 +12,10 @@ import {
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
 import { countries } from '../../utils/countries';
+import useData from '../../hooks/use-data';
 
 export default function ClientEditPage() {
-    const { client } = useLoaderData() as ClientLoaderResults;
+    const { client } = useData<ClientLoaderResults>();
 
     const [editedClient, setEditedClient] = useState<Client>(client);
     const navigate = useNavigate();

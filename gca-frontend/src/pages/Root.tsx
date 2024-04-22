@@ -1,10 +1,9 @@
-import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
 import LoginPage from './LoginPage';
+import useAuth from '../hooks/use-auth-context';
 
 export default function Root() {
-    const { isLoggedIn } = useContext(AuthContext);
+    const { isLoggedIn } = useAuth();
 
     return (
         <div className="min-h-screen bg-gray-100">

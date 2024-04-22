@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Policy } from '../../types/policy';
 import { updatePolicy } from '../../services/policyService';
 import { PolicyLoaderResults } from './policyLoader';
 import { actionButton, containerDiv, mainH1 } from '../../styleClassNames';
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
+import useData from '../../hooks/use-data';
 
 // Datos de prueba para los dropdowns
 const products = ['Producto A', 'Producto B', 'Producto C'].map((product) => ({
@@ -22,7 +23,7 @@ const companies = ['Compañía 1', 'Compañía 2', 'Compañía 3'].map((company)
 }));
 
 export default function PolicyEditPage() {
-    const { policy } = useLoaderData() as PolicyLoaderResults;
+    const { policy } = useData<PolicyLoaderResults>();
     const [editedPolicy, setEditedPolicy] = useState<Policy>(policy);
     const navigate = useNavigate();
 

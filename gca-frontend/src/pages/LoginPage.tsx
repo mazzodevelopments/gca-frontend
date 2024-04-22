@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { mainDiv, mainH1 } from '../styleClassNames';
-import { AuthContext } from '../context/AuthContext';
+import useAuth from '../hooks/use-auth-context';
 
 export default function LoginPage() {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const { login } = useContext(AuthContext);
+    const { login } = useAuth();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
