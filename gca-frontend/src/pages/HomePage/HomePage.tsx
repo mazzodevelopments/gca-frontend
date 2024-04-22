@@ -1,12 +1,11 @@
-import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 import FeaturedList from './components/FeaturedList';
 import ClientSearch from './components/ClientSearch';
 import { actionButton, mainDiv, mainH1 } from '../../styleClassNames';
+import useAuth from '../../hooks/use-auth-context';
 
 export default function HomePage() {
-    const { username, logout } = useContext(AuthContext);
+    const { username, logout } = useAuth();
 
     return (
         <div className={mainDiv}>

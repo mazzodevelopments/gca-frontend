@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import ClientList from '../../ClientPage/components/ClientList';
 import { Client } from '../../../types/client';
 import { clients } from '../../../testData';

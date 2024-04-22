@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createClient } from '../../services/clientService';
 import {
@@ -7,14 +7,14 @@ import {
     mainH1,
     actionButton
 } from '../../styleClassNames';
-import { AuthContext } from '../../context/AuthContext';
 import { AddableClient } from '../../types/client';
 import { countries } from '../../utils/countries';
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
+import useAuth from '../../hooks/use-auth-context';
 
 export default function ClientAddPage() {
-    const { userId } = useContext(AuthContext);
+    const { userId } = useAuth();
 
     const [newClient, setNewClient] = useState<AddableClient>({
         name: '',
