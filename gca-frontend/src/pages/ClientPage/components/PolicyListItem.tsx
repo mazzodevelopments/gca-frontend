@@ -11,7 +11,7 @@ export default function PolicyListItem({
     clientId,
     policy
 }: PolicyListItemProps) {
-    const { branchName, companyName } = policy;
+    const { id, branchName, companyName } = policy;
 
     return (
         <div
@@ -19,7 +19,7 @@ export default function PolicyListItem({
         >
             <h1 className={listH1}>{`${branchName} | ${companyName}`}</h1>
             <Link
-                to={`/client/${clientId}/policy/${policy.id}`}
+                to={`/client/${clientId}/policy/${id}`}
                 className={listButton}
             >
                 Detalles
