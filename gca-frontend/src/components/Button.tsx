@@ -33,7 +33,7 @@ export default function Button({
     } else if (isAction && submit) {
         return (
             <button className={actionButtonStyle} type="submit">
-                Guardar cliente
+                {label}
             </button>
         );
     } else
