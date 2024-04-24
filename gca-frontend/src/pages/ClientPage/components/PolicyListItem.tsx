@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
 import { Policy } from '../../../types/policy';
-import { listButton } from '../../../styleClassNames';
 import ListDiv from '../../../components/ListDiv';
+import Button from '../../../components/Button';
 
 interface PolicyListItemProps {
     clientId: number;
@@ -15,16 +14,17 @@ export default function PolicyListItem({
     const { id, branchName, companyName } = policy;
 
     return (
-        <ListDiv
-            label={`${branchName} | ${companyName}`}
-            classNames="flex justify-between items-center space-x-4 bg-gray-100"
-        >
-            <Link
-                to={`/client/${clientId}/policy/${id}`}
-                className={listButton}
+        <div>
+            <ListDiv
+                label={`${branchName} | ${companyName}`}
+                classNames="flex justify-between items-center space-x-4 bg-gray-100"
             >
-                Detalles
-            </Link>
-        </ListDiv>
+                <Button
+                    label="Detalles"
+                    isList
+                    to={`/client/${clientId}/policy/${id}`}
+                />
+            </ListDiv>
+        </div>
     );
 }

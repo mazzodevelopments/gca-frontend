@@ -19,7 +19,8 @@ export default function ListDiv({
             onClick={onClick}
         >
             <h1 className="font-medium text-lg">{label}</h1>
-            <span className="font-medium">{children}</span>
+            <span className="font-medium"></span>
+            {children}
         </div>
     );
 }

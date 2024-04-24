@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Button from './Button';
 
 interface ButtonHeaderProps {
     label: string;
@@ -16,12 +16,7 @@ export default function ButtonHeader({
     return (
         <div className={`flex justify-between items-center ${classNames}`}>
             <h1 className={`text-2xl font-bold`}>{label}</h1>
-            <Link
-                to={to}
-                className={`px-4 py-1 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 mb-4 mt-4`}
-            >
-                {buttonText}
-            </Link>
+            <Button label={buttonText} isAction to={to} />
         </div>
     );
 }
