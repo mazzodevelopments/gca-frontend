@@ -4,6 +4,7 @@ import useData from '../../hooks/use-data';
 import Container from '../../components/Container';
 import ListDiv from '../../components/ListDiv';
 import ButtonHeader from '../../components/ButtonHeader';
+import Separator from '../../components/Separator';
 
 export default function ClientPage() {
     const { client, policies } = useData<ClientLoaderResults>();
@@ -11,37 +12,44 @@ export default function ClientPage() {
     const { id, name, lastName, address, birthDay, phone, country } = client;
 
     return (
-        <Container>
-            <div>
-                <ButtonHeader
-                    label={name + ' ' + lastName}
-                    buttonText="Editar Cliente"
-                    to={`/client/${id}/edit`}
-                />
-                <ListDiv label="Dirección:">
-                    {address || 'No disponible'}
-                </ListDiv>
-                <ListDiv label="Fecha de nacimiento:">
-                    {birthDay.toLocaleDateString() || 'No disponible'}
-                </ListDiv>
-                <ListDiv label="Dirección:">
-                    {address || 'No disponible'}
-                </ListDiv>
-                <ListDiv label="Dirección:">
-                    {address || 'No disponible'}
-                </ListDiv>
-                <ListDiv label="Teléfono:">{phone || 'No disponible'}</ListDiv>
-                <ListDiv label="País:">{country || 'No disponible'}</ListDiv>
-            </div>
-            <div>
-                <ButtonHeader
-                    label="Polizas"
-                    buttonText="Agregar Poliza"
-                    to={`/client/${id}/policy-add`}
-                    classNames="mb-4 border-t"
-                />
-                <PolicyList clientId={client.id} policies={policies} />
-            </div>
+        <Container isMain>
+            <Container>
+                <div>
+                    <ButtonHeader
+                        label={name + ' ' + lastName}
+                        buttonText="Editar Cliente"
+                        to={`/client/${id}/edit`}
+                    />
+                    <ListDiv label="Dirección:">
+                        {address || 'No disponible'}
+                    </ListDiv>
+                    <ListDiv label="Fecha de nacimiento:">
+                        {birthDay.toLocaleDateString() || 'No disponible'}
+                    </ListDiv>
+                    <ListDiv label="Dirección:">
+                        {address || 'No disponible'}
+                    </ListDiv>
+                    <ListDiv label="Dirección:">
+                        {address || 'No disponible'}
+                    </ListDiv>
+                    <ListDiv label="Teléfono:">
+                        {phone || 'No disponible'}
+                    </ListDiv>
+                    <ListDiv label="País:">
+                        {country || 'No disponible'}
+                    </ListDiv>
+                </div>
+                <Separator marginY="mb-2" />
+                <div>
+                    <ButtonHeader
+                        label="Polizas"
+                        buttonText="Agregar Poliza"
+                        to={`/client/${id}/policy-add`}
+                        classNames="mb-4"
+                    />
+                    <PolicyList clientId={client.id} policies={policies} />
+                </div>
+            </Container>
         </Container>
     );
 }
