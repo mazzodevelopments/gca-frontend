@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { ClientLoaderResults } from './clientLoader';
 import { Client } from '../../types/client';
 import { updateClient } from '../../services/clientService';
-import { mainH1, actionButton } from '../../styleClassNames';
+import { actionButton } from '../../styleClassNames';
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
 import { countries } from '../../utils/countries';
 import useData from '../../hooks/use-data';
 import Container from '../../components/Container';
+import Header from '../../components/Header';
 
 export default function ClientEditPage() {
     const { client } = useData<ClientLoaderResults>();
@@ -49,7 +50,7 @@ export default function ClientEditPage() {
     return (
         <Container isMain>
             <Container>
-                <h1 className={`${mainH1} mb-4`}>Editar Cliente</h1>
+                <Header label="Editar Cliente" classNames="mb-4" />
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <Input
                         label="Nombre:"

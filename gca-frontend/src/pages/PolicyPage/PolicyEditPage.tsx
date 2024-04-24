@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Policy } from '../../types/policy';
 import { updatePolicy } from '../../services/policyService';
 import { PolicyLoaderResults } from './policyLoader';
-import { actionButton, mainH1 } from '../../styleClassNames';
+import { actionButton } from '../../styleClassNames';
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
 import useData from '../../hooks/use-data';
 import Container from '../../components/Container';
+import Header from '../../components/Header';
 
 // Datos de prueba para los dropdowns
 const products = ['Producto A', 'Producto B', 'Producto C'].map((product) => ({
@@ -57,7 +58,7 @@ export default function PolicyEditPage() {
     return (
         <Container isMain>
             <Container>
-                <h1 className={`${mainH1} mb-4`}>Editar Póliza</h1>
+                <Header label="Editar Póliza" classNames="mb-4" />
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <Input
                         label="Fecha de inicio:"

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AddablePolicy } from '../../types/policy';
 import { createPolicy } from '../../services/policyService';
-import { actionButton, mainH1 } from '../../styleClassNames';
+import { actionButton } from '../../styleClassNames';
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
 import Container from '../../components/Container';
+import Header from '../../components/Header';
 
 // Datos de prueba para los dropdowns
 const products = ['Producto A', 'Producto B', 'Producto C'].map((product) => ({
@@ -61,7 +62,7 @@ export default function PolicyAddPage() {
     return (
         <Container isMain>
             <Container>
-                <h1 className={`${mainH1} mb-4`}>Agregar Póliza</h1>
+                <Header label="Agregar Póliza" classNames="mb-4" />
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <Input
                         label="Fecha de inicio:"

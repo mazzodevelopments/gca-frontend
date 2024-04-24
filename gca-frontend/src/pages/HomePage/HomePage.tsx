@@ -3,6 +3,7 @@ import ClientSearch from './components/ClientSearch';
 import useAuth from '../../hooks/use-auth-context';
 import Container from '../../components/Container';
 import ButtonHeader from '../../components/ButtonHeader';
+import Header from '../../components/Header';
 
 export default function HomePage() {
     const { username, logout } = useAuth();
@@ -10,7 +11,7 @@ export default function HomePage() {
     return (
         <Container isMain>
             <Container>
-                <h1 className="text-2xl font-bold">Featured</h1>
+                <Header label="Featured" />
                 <FeaturedList />
             </Container>
             <Container classNames="mt-4">
