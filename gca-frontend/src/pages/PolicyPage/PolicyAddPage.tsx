@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AddablePolicy } from '../../types/policy';
 import { createPolicy } from '../../services/policyService';
-import { actionButton } from '../../styleClassNames';
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
+import Button from '../../components/Button';
 
 // Datos de prueba para los dropdowns
 const products = ['Producto A', 'Producto B', 'Producto C'].map((product) => ({
@@ -129,9 +129,7 @@ export default function PolicyAddPage() {
                         }
                     />
                     <div className="flex justify-center">
-                        <button className={actionButton} type="submit">
-                            Guardar póliza
-                        </button>
+                        <Button label="Guardar póliza" isAction submit />
                     </div>
                 </form>
             </Container>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createClient } from '../../services/clientService';
-import { actionButton } from '../../styleClassNames';
 import { AddableClient } from '../../types/client';
 import { countries } from '../../utils/countries';
 import Input from '../../components/Input';
@@ -9,6 +8,7 @@ import SelectInput from '../../components/SelectInput';
 import useAuth from '../../hooks/use-auth-context';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
+import Button from '../../components/Button';
 
 export default function ClientAddPage() {
     const { userId } = useAuth();
@@ -127,9 +127,7 @@ export default function ClientAddPage() {
                         onChange={handleChange}
                     />
                     <div className="flex justify-center">
-                        <button className={actionButton} type="submit">
-                            Guardar cliente
-                        </button>
+                        <Button label="Guardar cliente" isAction submit />
                     </div>
                 </form>
             </Container>

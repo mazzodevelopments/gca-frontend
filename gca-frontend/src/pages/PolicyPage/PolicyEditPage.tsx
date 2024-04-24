@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Policy } from '../../types/policy';
 import { updatePolicy } from '../../services/policyService';
 import { PolicyLoaderResults } from './policyLoader';
-import { actionButton } from '../../styleClassNames';
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
 import useData from '../../hooks/use-data';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
+import Button from '../../components/Button';
 
 // Datos de prueba para los dropdowns
 const products = ['Producto A', 'Producto B', 'Producto C'].map((product) => ({
@@ -126,9 +126,7 @@ export default function PolicyEditPage() {
                         }
                     />
                     <div className="flex justify-center">
-                        <button className={actionButton} type="submit">
-                            Guardar cambios
-                        </button>
+                        <Button label="Guardar cambios" isAction submit />
                     </div>
                 </form>
             </Container>

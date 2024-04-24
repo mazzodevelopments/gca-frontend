@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { ClientLoaderResults } from './clientLoader';
 import { Client } from '../../types/client';
 import { updateClient } from '../../services/clientService';
-import { actionButton } from '../../styleClassNames';
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
 import { countries } from '../../utils/countries';
 import useData from '../../hooks/use-data';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
+import Button from '../../components/Button';
 
 export default function ClientEditPage() {
     const { client } = useData<ClientLoaderResults>();
@@ -109,9 +109,7 @@ export default function ClientEditPage() {
                         }
                     />
                     <div className="flex justify-center">
-                        <button className={actionButton} type="submit">
-                            Guardar cambios
-                        </button>
+                        <Button label="Guardar cambios" isAction submit />
                     </div>
                 </form>
             </Container>
