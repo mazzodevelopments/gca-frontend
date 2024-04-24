@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
 import { ClientLoaderResults } from './clientLoader';
 import PolicyList from './components/PolicyList';
-import { mainH1, actionButton } from '../../styleClassNames';
 import useData from '../../hooks/use-data';
 import Container from '../../components/Container';
 import ListDiv from '../../components/ListDiv';
+import ButtonHeader from '../../components/ButtonHeader';
 
 export default function ClientPage() {
     const { client, policies } = useData<ClientLoaderResults>();
@@ -14,17 +13,11 @@ export default function ClientPage() {
     return (
         <Container>
             <div>
-                <div className="flex justify-between items-center mb-4">
-                    <h1 className={mainH1}>
-                        {name} {lastName}
-                    </h1>
-                    <Link
-                        to={`/client/${id}/edit`}
-                        className={`${actionButton}`}
-                    >
-                        Editar Cliente
-                    </Link>
-                </div>
+                <ButtonHeader
+                    label={name + ' ' + lastName}
+                    buttonText="Editar Cliente"
+                    to={`/client/${id}/edit`}
+                />
                 <ListDiv label="Dirección:">
                     {address || 'No disponible'}
                 </ListDiv>
@@ -41,15 +34,12 @@ export default function ClientPage() {
                 <ListDiv label="País:">{country || 'No disponible'}</ListDiv>
             </div>
             <div>
-                <div className="flex justify-between items-center mb-4 border-t">
-                    <h1 className={`${mainH1} mt-4`}>Polizas</h1>
-                    <Link
-                        to={`/client/${id}/policy-add`}
-                        className={`${actionButton} mt-4`}
-                    >
-                        Agregar Poliza
-                    </Link>
-                </div>
+                <ButtonHeader
+                    label="Polizas"
+                    buttonText="Agregar Poliza"
+                    to={`/client/${id}/policy-add`}
+                    classNames="mb-4 border-t"
+                />
                 <PolicyList clientId={client.id} policies={policies} />
             </div>
         </Container>
