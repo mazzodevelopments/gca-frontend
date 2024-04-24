@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { mainH1 } from '../styleClassNames';
 import useAuth from '../hooks/use-auth-context';
 import Container from '../components/Container';
 
@@ -32,9 +31,7 @@ export default function LoginPage() {
                 classNames="flex justify-center items-center h-screen"
             >
                 <div className="bg-white rounded-lg p-8 shadow-lg w-96">
-                    <h1
-                        className={`${mainH1} text-2xl font-bold mb-4 text-center`}
-                    >
+                    <h1 className="text-2xl  font-bold mb-4 text-center">
                         Iniciar Sesión
                     </h1>
                     <form onSubmit={handleSubmit} className="space-y-4">

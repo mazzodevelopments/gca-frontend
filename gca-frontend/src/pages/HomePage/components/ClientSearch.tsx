@@ -3,7 +3,6 @@ import ClientList from '../../ClientPage/components/ClientList';
 import { Client } from '../../../types/client';
 import { clients } from '../../../testData';
 import { GoSearch } from 'react-icons/go';
-import { mainH2 } from '../../../styleClassNames';
 
 export default function ClientSearch() {
     const [term, setTerm] = useState('');
@@ -37,7 +36,7 @@ export default function ClientSearch() {
                 </form>
             </div>
             <div className="mt-4">
-                <h2 className={mainH2}>Resultados:</h2>
+                <h2 className="text-xl font-bold">Resultados:</h2>
                 {results.length > 0 ? (
                     <ClientList clients={results} />
                 ) : (

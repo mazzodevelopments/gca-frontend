@@ -15,7 +15,7 @@ export default function ButtonHeader({
 }: ButtonHeaderProps) {
     return (
         <div className={`flex justify-between items-center ${classNames}`}>
-            <h1 className={`text-2xl font-bold`}>{label}</h1>
+            <h1 className="text-2xl font-bold">{label}</h1>
             <Button label={buttonText} isAction to={to} />
         </div>
     );
