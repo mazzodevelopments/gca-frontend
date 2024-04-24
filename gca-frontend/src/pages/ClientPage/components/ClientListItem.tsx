@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { listButton, listDiv, listH1 } from '../../../styleClassNames';
+import { listButton } from '../../../styleClassNames';
 import type { Client } from '../../../types/client';
+import ListDiv from '../../../components/ListDiv';
 
 interface ClientListItemProps {
     client: Client;
@@ -8,11 +9,13 @@ interface ClientListItemProps {
 
 export default function ClientListItem({ client }: ClientListItemProps) {
     return (
-        <div className={`${listDiv} bg-gray-100`}>
-            <h1 className={listH1}>{client.name + ' ' + client.lastName}</h1>
+        <ListDiv
+            label={client.name + ' ' + client.lastName}
+            classNames="bg-gray-100"
+        >
             <Link to={`/client/${client.id}`} className={listButton}>
                 Detalles
             </Link>
-        </div>
+        </ListDiv>
     );
 }

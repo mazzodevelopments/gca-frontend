@@ -1,5 +1,3 @@
-import { listH1 } from '../styleClassNames';
-
 interface InputProps {
     label: string;
     type: string;
@@ -21,7 +19,7 @@ export default function Input({
 }: InputProps) {
     return (
         <div className="flex flex-col">
-            <label className={listH1}>{label}</label>
+            <label className="font-medium text-lg">{label}</label>
             <input
                 type={type}
                 name={name}

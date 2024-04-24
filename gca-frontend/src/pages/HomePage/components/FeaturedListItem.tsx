@@ -1,4 +1,4 @@
-import { listDiv } from '../../../styleClassNames';
+import ListDiv from '../../../components/ListDiv';
 import type { Client } from '../../../types/client';
 
 interface FeaturedListItemProps {
@@ -13,8 +13,8 @@ export default function FeaturedListItem({
     const handleClick = () => {};
 
     return (
-        <div className={listDiv} onClick={handleClick}>
-            {client.name} - {text}
-        </div>
+        <ListDiv label={client.name} onClick={handleClick}>
+            {text}
+        </ListDiv>
     );
 }
