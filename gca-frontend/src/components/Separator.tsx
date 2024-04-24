@@ -1,5 +1,5 @@
 interface SeparatorProps {
-    marginY?: string; // Margen vertical opcional, por defecto 'my-4'
+    marginY?: string;
 }
 
 export default function Separator({ marginY = 'my-4' }: SeparatorProps) {
