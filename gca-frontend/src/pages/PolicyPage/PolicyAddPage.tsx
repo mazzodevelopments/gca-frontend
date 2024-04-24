@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AddablePolicy } from '../../types/policy';
 import { createPolicy } from '../../services/policyService';
-import { actionButton, containerDiv, mainH1 } from '../../styleClassNames';
+import { actionButton, mainH1 } from '../../styleClassNames';
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
+import Container from '../../components/Container';
 
 // Datos de prueba para los dropdowns
 const products = ['Producto A', 'Producto B', 'Producto C'].map((product) => ({
@@ -58,76 +59,81 @@ export default function PolicyAddPage() {
     };
 
     return (
-        <div className={containerDiv}>
-            <h1 className={`${mainH1} mb-4`}>Agregar Póliza</h1>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <Input
-                    label="Fecha de inicio:"
-                    type="date"
-                    name="startDate"
-                    value={newPolicy.startDate.toISOString().split('T')[0]}
-                    onChange={(e) =>
-                        setNewPolicy((prevPolicy) => ({
-                            ...prevPolicy,
-                            startDate: new Date(e.target.value)
-                        }))
-                    }
-                />
+        <Container isMain>
+            <Container>
+                <h1 className={`${mainH1} mb-4`}>Agregar Póliza</h1>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <Input
+                        label="Fecha de inicio:"
+                        type="date"
+                        name="startDate"
+                        value={newPolicy.startDate.toISOString().split('T')[0]}
+                        onChange={(e) =>
+                            setNewPolicy((prevPolicy) => ({
+                                ...prevPolicy,
+                                startDate: new Date(e.target.value)
+                            }))
+                        }
+                    />
 
-                <Input
-                    label="Fecha de finalización:"
-                    type="date"
-                    name="endDate"
-                    value={newPolicy.endDate.toISOString().split('T')[0]}
-                    onChange={(e) =>
-                        setNewPolicy((prevPolicy) => ({
-                            ...prevPolicy,
-                            endDate: new Date(e.target.value)
-                        }))
-                    }
-                />
-                <SelectInput
-                    label="Nombre del producto:"
-                    options={products}
-                    value={
-                        products.find(
-                            (option) => option.value === newPolicy.productName
-                        ) || null
-                    }
-                    onChange={(selectedOption) =>
-                        handleChange(selectedOption, 'productName')
-                    }
-                />
-                <SelectInput
-                    label="Nombre del ramo:"
-                    options={branches}
-                    value={
-                        branches.find(
-                            (option) => option.value === newPolicy.branchName
-                        ) || null
-                    }
-                    onChange={(selectedOption) =>
-                        handleChange(selectedOption, 'branchName')
-                    }
-                />
-                <SelectInput
-                    label="Nombre de la compañía:"
-                    options={companies}
-                    value={
-                        companies.find(
-                            (option) => option.value === newPolicy.companyName
-                        ) || null
-                    }
-                    onChange={(selectedOption) =>
-                        handleChange(selectedOption, 'companyName')
-                    }
-                />
-                <div className="flex justify-center">
-                    <button className={actionButton} type="submit">
-                        Guardar póliza
-                    </button>
-                </div>
-            </form>
-        </div>
+                    <Input
+                        label="Fecha de finalización:"
+                        type="date"
+                        name="endDate"
+                        value={newPolicy.endDate.toISOString().split('T')[0]}
+                        onChange={(e) =>
+                            setNewPolicy((prevPolicy) => ({
+                                ...prevPolicy,
+                                endDate: new Date(e.target.value)
+                            }))
+                        }
+                    />
+                    <SelectInput
+                        label="Nombre del producto:"
+                        options={products}
+                        value={
+                            products.find(
+                                (option) =>
+                                    option.value === newPolicy.productName
+                            ) || null
+                        }
+                        onChange={(selectedOption) =>
+                            handleChange(selectedOption, 'productName')
+                        }
+                    />
+                    <SelectInput
+                        label="Nombre del ramo:"
+                        options={branches}
+                        value={
+                            branches.find(
+                                (option) =>
+                                    option.value === newPolicy.branchName
+                            ) || null
+                        }
+                        onChange={(selectedOption) =>
+                            handleChange(selectedOption, 'branchName')
+                        }
+                    />
+                    <SelectInput
+                        label="Nombre de la compañía:"
+                        options={companies}
+                        value={
+                            companies.find(
+                                (option) =>
+                                    option.value === newPolicy.companyName
+                            ) || null
+                        }
+                        onChange={(selectedOption) =>
+                            handleChange(selectedOption, 'companyName')
+                        }
+                    />
+                    <div className="flex justify-center">
+                        <button className={actionButton} type="submit">
+                            Guardar póliza
+                        </button>
+                    </div>
+                </form>
+            </Container>
+        </Container>
     );
 }

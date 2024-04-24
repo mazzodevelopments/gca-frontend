@@ -1,14 +1,9 @@
 import { Link } from 'react-router-dom';
 import { ClientLoaderResults } from './clientLoader';
 import PolicyList from './components/PolicyList';
-import {
-    containerDiv,
-    mainH1,
-    listDiv,
-    listH1,
-    actionButton
-} from '../../styleClassNames';
+import { mainH1, listDiv, listH1, actionButton } from '../../styleClassNames';
 import useData from '../../hooks/use-data';
+import Container from '../../components/Container';
 
 export default function ClientPage() {
     const { client, policies } = useData<ClientLoaderResults>();
@@ -16,7 +11,7 @@ export default function ClientPage() {
     const { id, name, lastName, address, birthDay, phone, country } = client;
 
     return (
-        <div className={containerDiv}>
+        <Container>
             <div>
                 <div className="flex justify-between items-center mb-4">
                     <h1 className={mainH1}>
@@ -66,6 +61,6 @@ export default function ClientPage() {
                 </div>
                 <PolicyList clientId={client.id} policies={policies} />
             </div>
-        </div>
+        </Container>
     );
 }

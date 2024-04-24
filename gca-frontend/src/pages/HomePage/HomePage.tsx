@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom';
 import FeaturedList from './components/FeaturedList';
 import ClientSearch from './components/ClientSearch';
-import { actionButton, mainDiv, mainH1 } from '../../styleClassNames';
+import { actionButton, mainH1 } from '../../styleClassNames';
 import useAuth from '../../hooks/use-auth-context';
+import Container from '../../components/Container';
 
 export default function HomePage() {
     const { username, logout } = useAuth();
 
     return (
-        <div className={mainDiv}>
-            <div className="bg-white rounded-lg p-4">
+        <Container isMain>
+            <Container>
                 <h1 className={mainH1}>Featured</h1>
                 <FeaturedList />
-            </div>
-            <div className="bg-white rounded-lg p-4 mt-4">
+            </Container>
+            <Container classNames="mt-4">
                 <div className="flex justify-between items-center">
                     <h1 className={`${mainH1} mb-4`}>Clientes de {username}</h1>
                     <Link to={`/client-add`} className={`${actionButton} mb-4`}>
@@ -29,7 +30,7 @@ export default function HomePage() {
                         Logout
                     </button>
                 </div>
-            </div>
-        </div>
+            </Container>
+        </Container>
     );
 }
