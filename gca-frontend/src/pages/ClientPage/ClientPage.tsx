@@ -26,12 +26,6 @@ export default function ClientPage() {
                     <ListDiv label="Fecha de nacimiento:">
                         {birthDay.toLocaleDateString() || 'No disponible'}
                     </ListDiv>
-                    <ListDiv label="Dirección:">
-                        {address || 'No disponible'}
-                    </ListDiv>
-                    <ListDiv label="Dirección:">
-                        {address || 'No disponible'}
-                    </ListDiv>
                     <ListDiv label="Teléfono:">
                         {phone || 'No disponible'}
                     </ListDiv>
