@@ -28,7 +28,7 @@ export default function ClientSearch() {
                         type="text"
                         placeholder="Buscar clientes"
                         value={term}
-                        onChange={handleSearch} // Update search results on input change
+                        onChange={handleSearch}
                     />
                     <button className=" text-black px-4 py-2 hover:text-gray-500 focus:outline-none">
                         <GoSearch />

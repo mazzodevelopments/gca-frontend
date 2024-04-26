@@ -13,7 +13,7 @@ export const client1: Client = {
     userId: 123
 };
 
-const client2: Client = {
+export const client2: Client = {
     id: 2,
     name: 'Alice',
     lastName: 'Smith',
