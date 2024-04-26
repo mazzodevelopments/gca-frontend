@@ -1,5 +1,5 @@
+import ListItem from '../../../components/ListItem';
 import { Client } from '../../../types/client';
-import ClientListItem from './ClientListItem';
 
 interface ClientListProps {
     clients: Client[];
@@ -9,7 +9,15 @@ export default function ClientList({ clients }: ClientListProps) {
     let renderedItems;
     if (clients) {
         renderedItems = clients.map((item) => {
-            return <ClientListItem key={item.id} client={item} />;
+            const { name, lastName, id } = item;
+            return (
+                <ListItem
+                    key={id}
+                    label={name + ' ' + lastName}
+                    buttonLabel="Detalles"
+                    to={`/client/${id}`}
+                />
+            );
         });
     }
     return <div>{renderedItems}</div>;
