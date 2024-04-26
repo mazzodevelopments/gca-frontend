@@ -11,7 +11,7 @@ export default function HomePage() {
     return (
         <Container isMain>
             <Container>
-                <Header label="Featured" />
+                <Header label="Destacados" />
                 <FeaturedList />
             </Container>
             <Container classNames="mt-4">
