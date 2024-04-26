@@ -40,7 +40,11 @@ export default function ClientSearch() {
                 {results.length > 0 ? (
                     <ClientList clients={results} />
                 ) : (
-                    <p>No se encontraron resultados.</p>
+                    <div className="flex justify-center p-4">
+                        <p className="text-l font-semibold">
+                            No se encontraron resultados.
+                        </p>
+                    </div>
                 )}
             </div>
         </div>
