@@ -5,14 +5,14 @@ import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage/HomePage';
 import ClientPage from './pages/ClientPage/ClientPage';
 import ClientAddPage from './pages/ClientPage/ClientAddPage';
+import ClientEditPage from './pages/ClientPage/ClientEditPage';
 import PolicyPage from './pages/PolicyPage/PolicyPage';
+import PolicyAddPage from './pages/PolicyPage/PolicyAddPage';
 import PolicyEditPage from './pages/PolicyPage/PolicyEditPage';
 
 import { AuthProvider } from './context/AuthContext';
 import { clientLoader } from './pages/ClientPage/clientLoader';
 import { policyLoader } from './pages/PolicyPage/policyLoader';
-import PolicyAddPage from './pages/PolicyPage/PolicyAddPage';
-import ClientEditPage from './pages/ClientPage/ClientEditPage';
 
 const router = createBrowserRouter([
     {
