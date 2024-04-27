@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import Root from './pages/Root';
 import LoginPage from './pages/LoginPage';
@@ -53,7 +54,9 @@ const router = createBrowserRouter([
 export default function App() {
     return (
         <AuthProvider>
-            <RouterProvider router={router} />;
+            <CookiesProvider>
+                <RouterProvider router={router} />
+            </CookiesProvider>
         </AuthProvider>
     );
 }
