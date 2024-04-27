@@ -8,3 +8,7 @@ export const createClient = (client: AddableClient) => {
 export const updateClient = (editedClient: Client) => {
     console.log(editedClient);
 };
+
+export const deleteClient = (clientId: number) => {
+    console.log(clientId);
+};
