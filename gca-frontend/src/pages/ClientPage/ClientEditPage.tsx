@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { ClientLoaderResults } from './clientLoader';
 import { Client } from '../../types/client';
 import { updateClient } from '../../services/clientService';
+import { countries } from '../../utils/countries';
+
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
-import { countries } from '../../utils/countries';
 import useData from '../../hooks/use-data';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
