@@ -12,3 +12,12 @@ export const updateClient = (editedClient: Client) => {
 export const deleteClient = (clientId: number) => {
     console.log(clientId);
 };
+
+export async function getAllClientsByUserId(userId: number) {
+    console.log(userId);
+    const data = await fetch(
+        'https://6600a57387c91a1164198f19.mockapi.io/gca/clients'
+    );
+    const clients = data.json();
+    return clients;
+}

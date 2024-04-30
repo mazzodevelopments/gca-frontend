@@ -4,9 +4,12 @@ import useAuth from '../../hooks/use-auth-context';
 import Container from '../../components/Container';
 import ButtonHeader from '../../components/ButtonHeader';
 import Header from '../../components/Header';
+import useData from '../../hooks/use-data';
+import { HomeLoaderResults } from './homeLoader';
 
 export default function HomePage() {
     const { username, logout } = useAuth();
+    const { clients } = useData<HomeLoaderResults>();
 
     return (
         <Container isMain>
@@ -20,7 +23,7 @@ export default function HomePage() {
                     buttonText="Agregar Cliente"
                     to={`/client-add`}
                 />
-                <ClientSearch />
+                <ClientSearch clients={clients} />
                 <div className="flex justify-center">
                     <button
                         onClick={logout}

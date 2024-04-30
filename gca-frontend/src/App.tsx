@@ -14,6 +14,7 @@ import PolicyEditPage from './pages/PolicyPage/PolicyEditPage';
 import { AuthProvider } from './context/AuthContext';
 import { clientLoader } from './pages/ClientPage/clientLoader';
 import { policyLoader } from './pages/PolicyPage/policyLoader';
+import { homeLoader } from './pages/HomePage/homeLoader';
 
 const router = createBrowserRouter([
     {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
                 path: 'client/:clientId/policy-add',
                 element: <PolicyAddPage />
             },
-            { path: '/', element: <HomePage /> }
+            { path: '/', element: <HomePage />, loader: homeLoader }
         ]
     }
 ]);
