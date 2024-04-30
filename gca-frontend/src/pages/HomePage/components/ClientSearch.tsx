@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import ClientList from '../../ClientPage/components/ClientList';
 import { Client } from '../../../types/client';
-import { clients } from '../../../testData';
 import { GoSearch } from 'react-icons/go';
 
-export default function ClientSearch() {
+interface ClientSearchProps {
+    clients: Client[];
+}
+
+export default function ClientSearch({ clients }: ClientSearchProps) {
     const [term, setTerm] = useState('');
     const [results, setResults] = useState<Client[]>(clients);
 
