@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import useAuth from '../hooks/use-auth-context';
 import Container from '../components/Container';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+
+    const navigate = useNavigate();
 
     const { login } = useAuth();
 
@@ -19,6 +22,7 @@ export default function LoginPage() {
         }
         try {
             login(user, password);
+            navigate('/');
         } catch (e) {
             setError('Error');
         }
