@@ -14,10 +14,17 @@ export const deleteClient = (clientId: number) => {
 };
 
 export async function getAllClientsByUserId(userId: number) {
-    console.log(userId);
-    const data = await fetch(
-        'https://6600a57387c91a1164198f19.mockapi.io/gca/clients'
-    );
-    const clients = data.json();
-    return clients;
+    try {
+        console.log(userId);
+        const response = await fetch(
+            'https://6600a57387c91a1164198f19.mockapi.io/gca/clients'
+        );
+        const data = await response.json();
+        return data;
+    } catch (e) {
+        console.log(e);
+        return [];
+    }
 }
+
+// http://192.168.1.23:5001/clientspreview/12'
