@@ -5,18 +5,20 @@ interface ButtonHeaderProps {
     buttonText: string;
     to: string;
     classNames?: string;
+    danger?: boolean;
 }
 
 export default function ButtonHeader({
     label,
     buttonText,
     to,
-    classNames
+    classNames,
+    danger
 }: ButtonHeaderProps) {
     return (
         <div className={`flex justify-between items-center ${classNames}`}>
             <h1 className="text-2xl font-bold">{label}</h1>
-            <Button label={buttonText} isAction to={to} />
+            <Button label={buttonText} isAction isDanger={danger} to={to} />
         </div>
     );
 }

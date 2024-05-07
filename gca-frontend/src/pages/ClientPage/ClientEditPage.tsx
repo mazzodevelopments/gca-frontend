@@ -6,12 +6,13 @@ import { Client } from '../../types/client';
 import { updateClient } from '../../services/clientService';
 import { countries } from '../../utils/countries';
 
+import useData from '../../hooks/use-data';
+
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
-import useData from '../../hooks/use-data';
 import Container from '../../components/Container';
-import Header from '../../components/Header';
 import Button from '../../components/Button';
+import ButtonHeader from '../../components/ButtonHeader';
 
 export default function ClientEditPage() {
     const { client } = useData<ClientLoaderResults>();
@@ -52,7 +53,13 @@ export default function ClientEditPage() {
     return (
         <Container isMain>
             <Container>
-                <Header label="Editar Cliente" classNames="mb-4" />
+                <ButtonHeader
+                    label="Editar Cliente"
+                    buttonText="Eliminar Cliente"
+                    to={`/client/${client.id}/delete`}
+                    danger
+                    classNames="mb-4"
+                />
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <Input
                         label="Nombre:"

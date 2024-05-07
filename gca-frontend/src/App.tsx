@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage/HomePage';
 import ClientPage from './pages/ClientPage/ClientPage';
 import ClientAddPage from './pages/ClientPage/ClientAddPage';
 import ClientEditPage from './pages/ClientPage/ClientEditPage';
+import ClientDeletePage from './pages/ClientPage/ClientDeletePage';
 import PolicyPage from './pages/PolicyPage/PolicyPage';
 import PolicyAddPage from './pages/PolicyPage/PolicyAddPage';
 import PolicyEditPage from './pages/PolicyPage/PolicyEditPage';
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
             {
                 path: 'client/:clientId/edit',
                 element: <ClientEditPage />,
+                loader: clientLoader
+            },
+            {
+                path: 'client/:clientId/delete',
+                element: <ClientDeletePage />,
                 loader: clientLoader
             },
             {

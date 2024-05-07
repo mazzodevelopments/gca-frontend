@@ -19,7 +19,7 @@ export default function Button({
     to,
     onClick
 }: ButtonProps) {
-    const dangerColor = 'bg-red-500 hover:bg-red-600';
+    const dangerColor = 'bg-red-500 hover:bg-red-600 focus:bg-red-600';
     const actionButtonStyle = `px-4 py-1 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 mb-4 mt-4 ${
         isDanger ? dangerColor : ''
     }`;
