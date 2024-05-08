@@ -22,7 +22,7 @@ export async function homeLoader(): Promise<HomeLoaderResults> {
     const userId = authCookie ? JSON.parse(authCookie).userId : null;
 
     if (!userId) {
-        throw new Error('User must be logged in');
+        window.location.href = '/login';
     }
 
     // Obtener los clientes por userId
