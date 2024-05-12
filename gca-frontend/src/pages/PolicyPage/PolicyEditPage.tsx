@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Policy } from '../../types/policy';
-import { updatePolicy } from '../../services/policyService';
+
 import { PolicyLoaderResults } from './policyLoader';
+import { updatePolicy } from '../../services/policyService';
+
+import { Policy } from '../../types/policy';
+
+import useData from '../../hooks/use-data';
+
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
-import useData from '../../hooks/use-data';
 import Container from '../../components/Container';
-import Header from '../../components/Header';
 import Button from '../../components/Button';
+import ButtonHeader from '../../components/ButtonHeader';
 
 // Datos de prueba para los dropdowns
 const products = ['Producto A', 'Producto B', 'Producto C'].map((product) => ({
@@ -58,7 +62,13 @@ export default function PolicyEditPage() {
     return (
         <Container isMain>
             <Container>
-                <Header label="Editar Póliza" classNames="mb-4" />
+                <ButtonHeader
+                    label="Editar Póliza"
+                    buttonText="Eliminar Póliza"
+                    to={`/client/${policy.clientId}/policy/${policy.id}/delete`}
+                    danger
+                    classNames="mb-4"
+                />
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <Input
                         label="Fecha de inicio:"

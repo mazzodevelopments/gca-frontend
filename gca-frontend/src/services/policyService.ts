@@ -11,5 +11,5 @@ export const updatePolicy = (editedPolicy: Policy) => {
 
 // EN ESTE FILE TENER METODO PARA HACER EL UPDATE Y EL CREATE DE POLIZA
 export const deletePolicy = (policyId: number) => {
-    console.log(policyId);
+    console.log(`Poliza con id: ${policyId} eliminada`);
 };
