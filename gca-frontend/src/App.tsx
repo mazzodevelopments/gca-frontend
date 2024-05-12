@@ -11,12 +11,12 @@ import ClientDeletePage from './pages/ClientPage/ClientDeletePage';
 import PolicyPage from './pages/PolicyPage/PolicyPage';
 import PolicyAddPage from './pages/PolicyPage/PolicyAddPage';
 import PolicyEditPage from './pages/PolicyPage/PolicyEditPage';
+import PolicyDeletePage from './pages/PolicyPage/PolicyDeletePage';
 
 import { AuthProvider } from './context/AuthContext';
+import { homeLoader } from './pages/HomePage/homeLoader';
 import { clientLoader } from './pages/ClientPage/clientLoader';
 import { policyLoader } from './pages/PolicyPage/policyLoader';
-import { homeLoader } from './pages/HomePage/homeLoader';
-import PolicyDeletePage from './pages/PolicyPage/PolicyDeletePage';
 
 const router = createBrowserRouter([
     {
