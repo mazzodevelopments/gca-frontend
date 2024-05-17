@@ -7,7 +7,7 @@ export default function Root() {
 
     return (
         <div className="min-h-screen bg-gray-100">
-            <main className="container mx-auto p-4">
+            <main className="flex justify-center items-center ">
                 {isLoggedIn ? <Outlet /> : <LoginPage />}
             </main>
         </div>
