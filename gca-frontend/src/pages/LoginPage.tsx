@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useAuth from '../hooks/use-auth-context';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../public/img/logo.webp';
@@ -9,8 +9,11 @@ export default function LoginPage() {
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
+    const { login, logout } = useAuth();
 
-    const { login } = useAuth();
+    useEffect(() => {
+        logout();
+    }, [logout]);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -53,7 +56,7 @@ export default function LoginPage() {
                             name="user"
                             value={user}
                             onChange={(e) => setUser(e.target.value)}
-                            className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500" // Asegura que el input ocupe todo el ancho
+                            className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
                         />
                     </div>
                     <div>
@@ -69,7 +72,7 @@ export default function LoginPage() {
                             name="contrasena"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500" // Asegura que el input ocupe todo el ancho
+                            className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
                         />
                     </div>
                     <button
