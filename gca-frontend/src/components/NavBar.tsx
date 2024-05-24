@@ -4,9 +4,9 @@ import useAuth from '../hooks/use-auth-context';
 export default function NavBar() {
     const { logout } = useAuth();
     return (
-        <nav className="bg-gray-500 text-white p-4">
+        <nav className="bg-gray-200 text-black p-4">
             <div className="container mx-auto flex justify-between">
-                <Link to="/" className="hover:text-gray-200">
+                <Link to="/" className="hover:text-gray-500">
                     <h1 className="text-xl font-semibold">
                         Gestor de Clientes
                     </h1>
