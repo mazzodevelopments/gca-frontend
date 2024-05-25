@@ -18,18 +18,22 @@ export default function Input({
     validationError
 }: InputProps) {
     return (
-        <div className="flex flex-col">
-            <label className="font-medium text-lg">{label}</label>
+        <div className="flex flex-col mb-4">
+            <label htmlFor={id} className="font-medium text-lg mb-1">
+                {label}
+            </label>
             <input
                 type={type}
                 name={name}
                 id={id}
                 value={value}
                 onChange={onChange}
-                className="mt-1 p-2 border border-gray-300 rounded-md"
+                className="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
             />
             {validationError && (
-                <span style={{ color: 'red' }}>{validationError}</span>
+                <span className="text-red-500 text-sm mt-1">
+                    {validationError}
+                </span>
             )}
         </div>
     );

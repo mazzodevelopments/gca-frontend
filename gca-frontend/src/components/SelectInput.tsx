@@ -26,17 +26,22 @@ export default function SelectInput({
     validationError
 }: SelectInputProps) {
     return (
-        <div className="flex flex-col">
-            <label className="font-medium text-lg">{label}</label>
+        <div className="flex flex-col mb-4">
+            <label htmlFor={name} className="font-medium text-lg mb-1">
+                {label}
+            </label>
             <Select
                 value={value}
                 name={name}
                 options={options}
                 onChange={onChange}
-                className="mt-1 p-2 border border-gray-300 rounded-md"
+                classNamePrefix="react-select"
+                className="mt-1"
             />
             {validationError && (
-                <span style={{ color: 'red' }}>{validationError}</span>
+                <span className="text-red-500 text-sm mt-1">
+                    {validationError}
+                </span>
             )}
         </div>
     );

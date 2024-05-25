@@ -19,12 +19,17 @@ export default function Button({
     to,
     onClick
 }: ButtonProps) {
+    const baseButtonStyle =
+        'px-4 py-2 text-white rounded-lg focus:outline-none mb-4 mt-4';
     const dangerColor = 'bg-red-500 hover:bg-red-600 focus:bg-red-600';
-    const actionButtonStyle = `px-4 py-1 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 mb-4 mt-4 ${
-        isDanger ? dangerColor : ''
+    const actionColor = 'bg-gray-500 hover:bg-gray-600 focus:bg-gray-600';
+    const listColor = 'bg-blue-500 hover:bg-blue-600 focus:bg-blue-600';
+
+    const actionButtonStyle = `${baseButtonStyle} ${
+        isDanger ? dangerColor : actionColor
     }`;
-    const listButtonStyle =
-        'px-4 py-0.5 bg-blue-500 text-white rounded-xl hover:bg-blue-600 focus:outline-none focus:bg-blue-600';
+    const listButtonStyle = `px-4 py-1 ${listColor} text-white rounded-xl focus:outline-none`;
+
     if (isAction && to) {
         return (
             <Link to={to} className={actionButtonStyle}>
@@ -49,8 +54,9 @@ export default function Button({
                 {label}
             </button>
         );
-    } else
+    } else {
         throw new Error(
             'Invalid button configuration, check components/Button.tsx!'
         );
+    }
 }

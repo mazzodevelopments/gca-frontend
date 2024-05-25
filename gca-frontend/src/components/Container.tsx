@@ -13,13 +13,17 @@ export default function Container({
 }: ContainerProps) {
     if (isMain) {
         return (
-            <div className={`container mx-auto p-10 ${classNames}`}>
+            <div
+                className={`container mx-auto p-4 sm:p-6 lg:p-10 ${classNames}`}
+            >
                 {children}
             </div>
         );
     } else {
         return (
-            <div className={`bg-white rounded-lg p-4 mx-auto ${classNames}`}>
+            <div
+                className={`bg-white rounded-xl p-2 sm:p-6 lg:p-8 mx-auto ${classNames}`}
+            >
                 {children}
             </div>
         );

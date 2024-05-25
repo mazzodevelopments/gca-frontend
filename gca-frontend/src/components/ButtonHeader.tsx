@@ -16,8 +16,12 @@ export default function ButtonHeader({
     danger
 }: ButtonHeaderProps) {
     return (
-        <div className={`flex justify-between items-center ${classNames}`}>
-            <h1 className="text-2xl font-bold">{label}</h1>
+        <div
+            className={`flex flex-col sm:flex-row justify-between items-center ${classNames}`}
+        >
+            <h1 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-0">
+                {label}
+            </h1>
             <Button label={buttonText} isAction isDanger={danger} to={to} />
         </div>
     );
