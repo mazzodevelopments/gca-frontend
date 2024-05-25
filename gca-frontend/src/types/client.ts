@@ -29,6 +29,7 @@ export interface GettableClient {
     country: string;
     userId: number;
     policies: {
+        id: number;
         branchName: string;
         companyName: string;
     }[];

@@ -16,3 +16,9 @@ export interface AddablePolicy {
     companyName: string;
     clientId: number;
 }
+
+export interface ClientPagePolicy {
+    id: number;
+    branchName: string;
+    companyName: string;
+}
