@@ -15,18 +15,17 @@ function read_cookies(): Record<string, string | undefined> {
 }
 
 export async function homeLoader(): Promise<HomeLoaderResults> {
-    // Leer las cookies del navegador
+    // LEER COOKIES DEL NAVEGADOR
     const cookies = read_cookies();
-    // Extraer el userId de las cookies
+    // EXTRAER USERID DE LAS COOKIES
     const authCookie = cookies.auth;
     const userId = authCookie ? JSON.parse(authCookie).userId : null;
-
+    // SI NO HAY USERID REDIRIGIR AL LOGIN
     if (!userId) {
         window.location.href = '/login';
     }
 
-    // Obtener los clientes por userId
+    // OBTENER TODOS LOS CLIENTES DEL USER Y DEVOLVERLOS
     const clients = await getAllClientsByUserId(userId);
-
     return { clients };
 }
