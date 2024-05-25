@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../hooks/use-auth-context';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../public/img/logo.webp';
+import logo from '/img/logo.webp';
 
 export default function LoginPage() {
     const [user, setUser] = useState('');
