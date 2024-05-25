@@ -1,8 +1,8 @@
 import type { Params } from 'react-router-dom';
-import type { Client } from '../../types/client';
-import { Policy } from '../../types/policy';
+import type { Client } from '../../../types/client';
+import { Policy } from '../../../types/policy';
 // TEST
-import { client1, policiesTest } from '../../testData';
+import { client1, policiesTest } from '../../../testData';
 
 interface LoaderArgs {
     params: Params;
