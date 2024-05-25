@@ -20,10 +20,13 @@ export default function Button({
     onClick
 }: ButtonProps) {
     const baseButtonStyle =
-        'px-4 py-2 text-white rounded-xl focus:outline-none mb-4 mt-4';
-    const dangerColor = 'bg-red-500 hover:bg-red-600 focus:bg-red-600';
-    const actionColor = 'bg-gray-500 hover:bg-gray-600 focus:bg-gray-600';
-    const listColor = 'bg-blue-500 hover:bg-blue-600 focus:bg-blue-600';
+        'px-4 py-2 text-white rounded-xl focus:outline-none mb-4 mt-4 transition duration-300 ease-in-out transform hover:scale-105';
+    const dangerColor =
+        'bg-red-500 shadow-md hover:bg-red-600 focus:bg-red-700';
+    const actionColor =
+        'bg-gray-500 shadow-md hover:bg-gray-600 focus:bg-purple-700';
+    const listColor =
+        'bg-blue-500 shadow-md hover:bg-blue-600 focus:bg-blue-700';
 
     const actionButtonStyle = `${baseButtonStyle} ${
         isDanger ? dangerColor : actionColor
