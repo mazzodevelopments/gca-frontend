@@ -1,8 +1,8 @@
-import type { Client } from '../../types/client';
+import type { HomePageClient } from '../../types/client';
 import { getAllClientsByUserId } from '../../services/clientService';
 
 export interface HomeLoaderResults {
-    clients: Client[];
+    clients: HomePageClient[];
 }
 
 function read_cookies(): Record<string, string | undefined> {
