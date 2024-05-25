@@ -15,7 +15,7 @@ export default function LoginPage() {
         logout();
     }, [logout]);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!user || !password) {
             setError(
@@ -24,7 +24,7 @@ export default function LoginPage() {
             return;
         }
         try {
-            login(user, password);
+            await login(user, password);
             navigate('/');
         } catch (e) {
             setError('Error');
