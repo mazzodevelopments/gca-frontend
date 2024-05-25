@@ -13,6 +13,34 @@ export const deleteClient = (clientId: number) => {
     console.log(clientId + ' eliminado');
 };
 
+export async function getClientData(clientId: number) {
+    try {
+        console.log('Datos ' + clientId);
+        const response = await fetch(
+            'https://6600a57387c91a1164198f19.mockapi.io/gca/clients'
+        );
+        const data = await response.json();
+        return data;
+    } catch (e) {
+        console.log(e);
+        return null;
+    }
+}
+
+export async function getClientPageData(clientId: number) {
+    try {
+        console.log('Datos ' + clientId);
+        const response = await fetch(
+            'https://6600a57387c91a1164198f19.mockapi.io/gca/clients'
+        );
+        const data = await response.json();
+        return data;
+    } catch (e) {
+        console.log(e);
+        return null;
+    }
+}
+
 export async function getAllClientsByUserId(userId: number) {
     try {
         console.log('clientes de ' + userId);

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import { deleteClient } from '../../services/clientService';
-import { ClientLoaderResults } from './clientLoader';
+import { ClientLoaderResults } from './loaders/clientLoader';
 
 import useData from '../../hooks/use-data';
 

@@ -1,10 +1,12 @@
-import { ClientLoaderResults } from './clientLoader';
-import PolicyList from './components/PolicyList';
 import useData from '../../hooks/use-data';
+
+import PolicyList from './components/PolicyList';
 import Container from '../../components/Container';
 import ListDiv from '../../components/ListDiv';
 import ButtonHeader from '../../components/ButtonHeader';
 import Separator from '../../components/Separator';
+
+import { ClientLoaderResults } from './loaders/clientLoader';
 
 export default function ClientPage() {
     const { client, policies } = useData<ClientLoaderResults>();

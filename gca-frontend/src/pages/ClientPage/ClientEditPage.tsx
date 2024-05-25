@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { ClientLoaderResults } from './clientLoader';
+import { ClientLoaderResults } from './loaders/clientLoader';
 import { Client } from '../../types/client';
 import { updateClient } from '../../services/clientService';
 import { countries } from '../../utils/countries';
