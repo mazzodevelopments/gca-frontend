@@ -1,5 +1,6 @@
 import React, { createContext, useState, PropsWithChildren } from 'react';
 import { useCookies } from 'react-cookie';
+import axios from 'axios';
 
 interface AuthContextType {
     isLoggedIn: boolean;
@@ -13,7 +14,7 @@ const initialAuthContext: AuthContextType = {
     isLoggedIn: false,
     username: '',
     userId: 0,
-    login: () => {},
+    login: async () => {},
     logout: () => {}
 };
 
@@ -31,14 +32,32 @@ const AuthProvider: React.FC<PropsWithChildren<object>> = ({ children }) => {
         cookies.auth ? cookies.auth.userId : 0
     );
 
-    const login = (username: string, password: string) => {
-        if (username === 'toto' && password === 'toto') {
+    const login = async (username: string, password: string) => {
+        try {
+            const response = await axios.post(
+                'http://192.168.1.23:5001/login',
+                {
+                    username,
+                    password
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+
+            const data = response.data;
+            console.log('POST request successful:', data);
+
             setIsLoggedIn(true);
             setUsername(username);
-            setUserId(1); // ID DEL USUARIO AL INICIAR SESION
-            setCookie('auth', { username, userId: 1 }, { path: '/' });
-        } else {
-            throw new Error('No existe ese usuario');
+            setUserId(data.userId);
+            setCookie('auth', { username, userId: data.userId }, { path: '/' });
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+            console.error('POST request failed:', error.message);
+            throw error;
         }
     };
 
