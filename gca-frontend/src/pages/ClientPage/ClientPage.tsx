@@ -22,13 +22,13 @@ export default function ClientPage() {
                         buttonText="Editar Cliente"
                         to={`/client/${id}/edit`}
                     />
-                    <ListDiv label="Dirección:">
+                    <ListDiv hasBorderBottom label="Dirección:">
                         {address || 'No disponible'}
                     </ListDiv>
-                    <ListDiv label="Fecha de nacimiento:">
+                    <ListDiv hasBorderBottom label="Fecha de nacimiento:">
                         {birthDay.toLocaleDateString() || 'No disponible'}
                     </ListDiv>
-                    <ListDiv label="Teléfono:">
+                    <ListDiv hasBorderBottom label="Teléfono:">
                         {phone || 'No disponible'}
                     </ListDiv>
                     <ListDiv label="País:">

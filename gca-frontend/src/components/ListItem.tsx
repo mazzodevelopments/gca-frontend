@@ -4,18 +4,23 @@ import ListDiv from './ListDiv';
 interface ListItemProps {
     label: string;
     buttonLabel: string;
+    hasBorderBottom: boolean;
     to: string;
 }
 
-export default function ListItem({ label, buttonLabel, to }: ListItemProps) {
+export default function ListItem({
+    label,
+    buttonLabel,
+    hasBorderBottom,
+    to
+}: ListItemProps) {
     return (
-        <div>
-            <ListDiv
-                label={label}
-                classNames="flex justify-between items-center space-x-4 bg-gray-100"
-            >
-                <Button label={buttonLabel} isList to={to} />
-            </ListDiv>
-        </div>
+        <ListDiv
+            hasBorderBottom={hasBorderBottom}
+            label={label}
+            classNames="flex justify-between rounded-xl items-center space-x-4 bg-gray-100"
+        >
+            <Button label={buttonLabel} isList to={to} />
+        </ListDiv>
     );
 }

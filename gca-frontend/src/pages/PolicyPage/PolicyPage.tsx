@@ -16,16 +16,16 @@ export default function PolicyPage() {
                     buttonText="Editar Poliza"
                     to={`${window.location.pathname}/edit`}
                 />
-                <ListDiv label="Fecha de inicio:">
+                <ListDiv hasBorderBottom label="Fecha de inicio:">
                     {startDate.toLocaleDateString() || 'No disponible'}
                 </ListDiv>
-                <ListDiv label="Fecha de finalización:">
+                <ListDiv hasBorderBottom label="Fecha de finalización:">
                     {endDate.toLocaleDateString() || 'No disponible'}
                 </ListDiv>
-                <ListDiv label="Nombre del producto:">
+                <ListDiv hasBorderBottom label="Nombre del producto:">
                     {productName || 'No disponible'}
                 </ListDiv>
-                <ListDiv label="Nombre del ramo:">
+                <ListDiv hasBorderBottom label="Nombre del ramo:">
                     {branchName || 'No disponible'}
                 </ListDiv>
                 <ListDiv label="Nombre de la compañia:">

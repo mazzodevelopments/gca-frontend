@@ -5,17 +5,21 @@ interface ListDivProps {
     children: ReactNode;
     classNames?: string;
     onClick?: () => void;
+    hasBorderBottom?: boolean;
 }
 
 export default function ListDiv({
     label,
     children,
     classNames,
-    onClick
+    onClick,
+    hasBorderBottom = false
 }: ListDivProps) {
     return (
         <div
-            className={`flex items-center justify-between rounded-xl px-2 py-2 m-2 ${classNames}`}
+            className={`flex items-center justify-between ${
+                hasBorderBottom ? 'border-b' : ''
+            } px-2 py-2 m-2 ${classNames}`}
             onClick={onClick}
         >
             <h1 className="font-medium text-lg">{label}</h1>
