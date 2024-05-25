@@ -22,6 +22,7 @@ export default function HomePage() {
                     label={`Clientes de ${username}`}
                     buttonText="Agregar Cliente"
                     to={`/client-add`}
+                    classNames="mb-4"
                 />
                 <ClientSearch clients={clients} />
             </Container>
