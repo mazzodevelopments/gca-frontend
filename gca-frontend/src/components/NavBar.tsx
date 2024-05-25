@@ -13,7 +13,7 @@ export default function NavBar() {
                 </Link>
                 <button
                     onClick={logout}
-                    className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-lg"
+                    className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-xl"
                 >
                     Logout
                 </button>
