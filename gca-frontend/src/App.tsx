@@ -15,8 +15,9 @@ import PolicyDeletePage from './pages/PolicyPage/PolicyDeletePage';
 
 import { AuthProvider } from './context/AuthContext';
 import { homeLoader } from './pages/HomePage/homeLoader';
-import { clientLoader } from './pages/ClientPage/clientLoader';
+import { clientLoader } from './pages/ClientPage/loaders/clientLoader';
 import { policyLoader } from './pages/PolicyPage/policyLoader';
+import { editClientLoader } from './pages/ClientPage/loaders/editClientLoader';
 
 const router = createBrowserRouter([
     {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
             {
                 path: 'client/:clientId/edit',
                 element: <ClientEditPage />,
-                loader: clientLoader
+                loader: editClientLoader
             },
             {
                 path: 'client/:clientId/delete',
