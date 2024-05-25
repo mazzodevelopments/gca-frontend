@@ -20,6 +20,7 @@ export interface AddableClient {
 }
 
 export interface GettableClient {
+    id: number;
     name: string;
     lastName: string;
     address: string;
