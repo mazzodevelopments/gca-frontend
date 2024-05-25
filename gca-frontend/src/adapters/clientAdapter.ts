@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Client, GettableClient } from '../types/client';
+import { Client, GettableClient, HomePageClient } from '../types/client';
 
 export function adaptClientData(data: any): Client {
     return {
@@ -28,15 +28,10 @@ export default function adaptClientPageData(client: any): GettableClient {
     };
 }
 
-export function adaptClientListData(data: any[]): Client[] {
+export function adaptClientListData(data: any[]): HomePageClient[] {
     return data.map((client) => ({
         id: client.id,
         name: client.name,
-        lastName: client.lastName,
-        address: client.address,
-        birthDay: new Date(client.birthDay),
-        phone: client.phone,
-        country: client.country,
-        userId: client.userId
+        lastName: client.lastName
     }));
 }

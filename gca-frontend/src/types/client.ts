@@ -33,3 +33,9 @@ export interface GettableClient {
         companyName: string;
     }[];
 }
+
+export interface HomePageClient {
+    id: number;
+    name: string;
+    lastName: string;
+}
