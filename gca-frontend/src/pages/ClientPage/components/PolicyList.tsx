@@ -1,9 +1,9 @@
 import ListItem from '../../../components/ListItem';
-import { Policy } from '../../../types/policy';
+import { ClientPagePolicy } from '../../../types/policy';
 
 interface PolicyListProps {
     clientId: number;
-    policies: Policy[];
+    policies: ClientPagePolicy[];
 }
 
 export default function PolicyList({ clientId, policies }: PolicyListProps) {

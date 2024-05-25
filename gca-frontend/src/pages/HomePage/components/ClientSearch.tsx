@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import ClientList from '../../ClientPage/components/ClientList';
-import { Client } from '../../../types/client';
+import { HomePageClient } from '../../../types/client';
 import { GoSearch } from 'react-icons/go';
 
 interface ClientSearchProps {
-    clients: Client[];
+    clients: HomePageClient[];
 }
 
 export default function ClientSearch({ clients }: ClientSearchProps) {
     const [term, setTerm] = useState('');
-    const [results, setResults] = useState<Client[]>(clients);
+    const [results, setResults] = useState<HomePageClient[]>(clients);
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         const searchTerm = event.target.value.toLowerCase();

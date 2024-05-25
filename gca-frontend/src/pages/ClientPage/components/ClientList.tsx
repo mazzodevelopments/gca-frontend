@@ -1,8 +1,8 @@
 import ListItem from '../../../components/ListItem';
-import { Client } from '../../../types/client';
+import { HomePageClient } from '../../../types/client';
 
 interface ClientListProps {
-    clients: Client[];
+    clients: HomePageClient[];
 }
 
 export default function ClientList({ clients }: ClientListProps) {
@@ -12,6 +12,7 @@ export default function ClientList({ clients }: ClientListProps) {
             const { name, lastName, id } = item;
             return (
                 <ListItem
+                    hasBorderBottom={false}
                     key={id}
                     label={name + ' ' + lastName}
                     buttonLabel="Detalles"
