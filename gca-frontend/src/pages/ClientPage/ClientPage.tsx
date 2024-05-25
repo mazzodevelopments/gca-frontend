@@ -36,7 +36,7 @@ export default function ClientPage() {
                     </ListDiv>
                 </div>
                 <Separator marginY="mb-2" />
-                <div>
+                <div className="mt-4">
                     <ButtonHeader
                         label="Polizas"
                         buttonText="Agregar Poliza"
