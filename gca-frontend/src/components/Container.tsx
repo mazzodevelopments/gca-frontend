@@ -22,7 +22,7 @@ export default function Container({
     } else {
         return (
             <div
-                className={`bg-white rounded-xl p-2 sm:p-6 lg:p-8 mx-auto ${classNames}`}
+                className={`bg-white rounded-xl p-2 sm:p-4 lg:p-6 mx-auto ${classNames}`}
             >
                 {children}
             </div>
