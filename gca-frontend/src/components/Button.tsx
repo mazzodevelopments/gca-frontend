@@ -20,7 +20,7 @@ export default function Button({
     onClick
 }: ButtonProps) {
     const baseButtonStyle =
-        'px-4 py-2 text-white rounded-xl focus:outline-none mb-4 mt-4 transition duration-300 ease-in-out transform hover:scale-105';
+        'px-4 py-2 text-white rounded-xl focus:outline-none transition duration-300 ease-in-out transform hover:scale-105';
     const dangerColor =
         'bg-red-500 shadow-md hover:bg-red-600 focus:bg-red-700';
     const actionColor =

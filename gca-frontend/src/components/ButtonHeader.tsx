@@ -17,7 +17,7 @@ export default function ButtonHeader({
 }: ButtonHeaderProps) {
     return (
         <div
-            className={`flex flex-col sm:flex-row justify-between items-center ${classNames}`}
+            className={`flex flex-col sm:flex-row justify-between items-center mb-4 ${classNames}`}
         >
             <h1 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-0">
                 {label}
