@@ -18,3 +18,17 @@ export interface AddableClient {
     country: string;
     userId: number;
 }
+
+export interface GettableClient {
+    name: string;
+    lastName: string;
+    address: string;
+    birthDay: Date;
+    phone: string;
+    country: string;
+    userId: number;
+    policies: {
+        branchName: string;
+        companyName: string;
+    }[];
+}
