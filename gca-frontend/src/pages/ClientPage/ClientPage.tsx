@@ -22,18 +22,20 @@ export default function ClientPage() {
                         buttonText="Editar Cliente"
                         to={`/client/${id}/edit`}
                     />
-                    <ListDiv hasBorderBottom label="Dirección:">
-                        {address || 'No disponible'}
-                    </ListDiv>
-                    <ListDiv hasBorderBottom label="Fecha de nacimiento:">
-                        {birthDay.toLocaleDateString() || 'No disponible'}
-                    </ListDiv>
-                    <ListDiv hasBorderBottom label="Teléfono:">
-                        {phone || 'No disponible'}
-                    </ListDiv>
-                    <ListDiv label="País:">
-                        {country || 'No disponible'}
-                    </ListDiv>
+                    <div className="px-1">
+                        <ListDiv hasBorderBottom label="Dirección:">
+                            {address || 'No disponible'}
+                        </ListDiv>
+                        <ListDiv hasBorderBottom label="Fecha de nacimiento:">
+                            {birthDay.toLocaleDateString() || 'No disponible'}
+                        </ListDiv>
+                        <ListDiv hasBorderBottom label="Teléfono:">
+                            {phone || 'No disponible'}
+                        </ListDiv>
+                        <ListDiv label="País:">
+                            {country || 'No disponible'}
+                        </ListDiv>
+                    </div>
                 </div>
                 <Separator marginY="mb-2" />
                 <div className="mt-4">

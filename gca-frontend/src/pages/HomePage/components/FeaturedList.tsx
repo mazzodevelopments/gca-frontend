@@ -25,6 +25,7 @@ export default function FeaturedList() {
 
             return (
                 <ListItem
+                    hasBorderBottom={false}
                     key={client.id}
                     label={text}
                     buttonLabel="Ir al cliente"
@@ -34,5 +35,5 @@ export default function FeaturedList() {
         });
     }
 
-    return <div>{renderedItems}</div>;
+    return <div className="px-1">{renderedItems}</div>;
 }

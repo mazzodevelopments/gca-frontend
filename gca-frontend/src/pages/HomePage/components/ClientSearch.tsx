@@ -38,8 +38,8 @@ export default function ClientSearch({ clients }: ClientSearchProps) {
                     </button>
                 </form>
             </div>
-            <div className="mt-4">
-                <h2 className="text-xl font-bold">Resultados:</h2>
+            <h2 className="mt-4 text-xl font-bold">Resultados:</h2>
+            <div className="px-1">
                 {results.length > 0 ? (
                     <ClientList clients={results} />
                 ) : (

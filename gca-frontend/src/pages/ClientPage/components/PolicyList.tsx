@@ -13,6 +13,7 @@ export default function PolicyList({ clientId, policies }: PolicyListProps) {
             const { id, branchName, companyName } = item;
             return (
                 <ListItem
+                    hasBorderBottom={false}
                     key={id}
                     label={`${branchName} | ${companyName}`}
                     buttonLabel="Detalles"
@@ -21,5 +22,5 @@ export default function PolicyList({ clientId, policies }: PolicyListProps) {
             );
         });
     }
-    return <div>{renderedItems}</div>;
+    return <div className="px-1">{renderedItems}</div>;
 }
