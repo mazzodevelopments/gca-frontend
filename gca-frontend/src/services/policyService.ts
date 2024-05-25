@@ -13,3 +13,17 @@ export const updatePolicy = (editedPolicy: Policy) => {
 export const deletePolicy = (policyId: number) => {
     console.log(`Poliza con id: ${policyId} eliminada`);
 };
+
+export async function getPolicyData(policyId: number) {
+    try {
+        console.log('Datos ' + policyId);
+        const response = await fetch(
+            'https://6600a57387c91a1164198f19.mockapi.io/gca/clients'
+        );
+        const data = await response.json();
+        return data;
+    } catch (e) {
+        console.log(e);
+        return null;
+    }
+}
