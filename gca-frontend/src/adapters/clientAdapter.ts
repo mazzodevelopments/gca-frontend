@@ -2,7 +2,7 @@
 import { Client, GettableClient, HomePageClient } from '../types/client';
 
 export function adaptClientData(data: any): Client {
-    return {
+    const client: Client = {
         id: data.id,
         name: data.name,
         lastName: data.lastName,
@@ -12,10 +12,11 @@ export function adaptClientData(data: any): Client {
         country: data.country,
         userId: data.userId
     };
+    return client;
 }
 
 export default function adaptClientPageData(client: any): GettableClient {
-    return {
+    const gettableClient: GettableClient = {
         id: client.id,
         name: client.name,
         lastName: client.lastName,
@@ -26,12 +27,14 @@ export default function adaptClientPageData(client: any): GettableClient {
         userId: client.userId,
         policies: client.policies
     };
+    return gettableClient;
 }
 
 export function adaptClientListData(data: any[]): HomePageClient[] {
-    return data.map((client) => ({
+    const homePageClients: HomePageClient[] = data.map((client) => ({
         id: client.id,
         name: client.name,
         lastName: client.lastName
     }));
+    return homePageClients;
 }

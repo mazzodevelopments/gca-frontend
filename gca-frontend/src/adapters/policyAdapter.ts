@@ -2,7 +2,7 @@
 import { Policy } from '../types/policy';
 
 export default function adaptPolicyData(data: any): Policy {
-    return {
+    const policy: Policy = {
         id: data.id,
         startDate: new Date(data.startDate),
         endDate: new Date(data.endDate),
@@ -11,4 +11,5 @@ export default function adaptPolicyData(data: any): Policy {
         companyName: data.companyName,
         clientId: data.clientId
     };
+    return policy;
 }
