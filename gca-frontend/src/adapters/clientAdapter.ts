@@ -35,10 +35,10 @@ export default function adaptClientPageData(data: any): {
 }
 
 export function adaptClientListData(data: any[]): HomePageClient[] {
-    const homePageClients: HomePageClient[] = data.map((client) => ({
+    const clients: HomePageClient[] = data.map((client) => ({
         id: client.id,
         name: client.name,
         lastName: client.lastName
     }));
-    return homePageClients;
+    return clients;
 }
