@@ -1,8 +1,7 @@
 import type { Params } from 'react-router-dom';
 import type { Client } from '../../../types/client';
-import { Policy } from '../../../types/policy';
-// TEST
-import { client1, policiesTest } from '../../../testData';
+import { ClientPagePolicy } from '../../../types/policy';
+import { getClientPageData } from '../../../services/clientService';
 
 interface LoaderArgs {
     params: Params;
@@ -10,20 +9,26 @@ interface LoaderArgs {
 
 export interface ClientLoaderResults {
     client: Client;
-    policies: Policy[];
+    policies: ClientPagePolicy[];
 }
 
 export async function clientLoader({
     params
-}: LoaderArgs): Promise<ClientLoaderResults> {
+}: LoaderArgs): Promise<ClientLoaderResults | null> {
     const { clientId } = params;
 
     if (!clientId) {
-        throw new Error('Name must be provided');
+        throw new Error('Client id must be provided');
     }
 
-    return { client: client1, policies: policiesTest };
-}
+    const data = await getClientPageData(parseInt(clientId));
 
-// EN ESTE LOADER VOY A TENER QUE RECIBIR EL ID DEL CLIENTE POR PARAMETRO
-// Y CON ESO LLAMAR GETUSER(ID) PARA QUE ME DEVUELVA EL OBJETO DEL CLIENTE
+    if (!data) {
+        return null;
+    }
+
+    const client: Client = data.client;
+    const policies: ClientPagePolicy[] = data.policies ?? [];
+
+    return { client, policies };
+}

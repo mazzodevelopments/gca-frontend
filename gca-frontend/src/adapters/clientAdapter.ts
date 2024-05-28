@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Client, GettableClient, HomePageClient } from '../types/client';
+import { Client, HomePageClient } from '../types/client';
+import { ClientPagePolicy } from '../types/policy';
 
 export function adaptClientData(data: any): Client {
     const client: Client = {
@@ -15,19 +16,22 @@ export function adaptClientData(data: any): Client {
     return client;
 }
 
-export default function adaptClientPageData(client: any): GettableClient {
-    const gettableClient: GettableClient = {
-        id: client.id,
-        name: client.name,
-        lastName: client.lastName,
-        address: client.address,
-        birthDay: new Date(client.birthDay),
-        phone: client.phone,
-        country: client.country,
-        userId: client.userId,
-        policies: client.policies
+export default function adaptClientPageData(data: any): {
+    client: Client;
+    policies: ClientPagePolicy[];
+} {
+    const client: Client = {
+        id: data.id,
+        name: data.name,
+        lastName: data.lastName,
+        address: data.address,
+        birthDay: new Date(data.birthDay),
+        phone: data.phone,
+        country: data.country,
+        userId: data.userId
     };
-    return gettableClient;
+    const policies: ClientPagePolicy[] = data.policies;
+    return { client, policies };
 }
 
 export function adaptClientListData(data: any[]): HomePageClient[] {
