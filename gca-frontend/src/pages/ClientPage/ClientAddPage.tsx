@@ -17,10 +17,10 @@ export default function ClientAddPage() {
         name: '',
         lastName: '',
         address: '',
-        birthDay: new Date(),
+        birthDay: '',
         phone: '',
         country: '',
-        userId
+        fk_userID: userId || 0
     });
 
     const navigate = useNavigate();
@@ -34,11 +34,21 @@ export default function ClientAddPage() {
         }));
     };
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setNewClient((prevClient) => ({
+            ...prevClient,
+            [name]: value
+        }));
+    };
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
             const newClientId = await createClient(newClient);
-            navigate(`/client/${newClientId}`);
+            if (newClientId) {
+                navigate(`/client/${newClientId}`);
+            }
         } catch (error) {
             console.error('Error creating client:', error);
         }
@@ -60,60 +70,35 @@ export default function ClientAddPage() {
                         type="text"
                         name="name"
                         value={newClient.name}
-                        onChange={(e) =>
-                            setNewClient((prevClient) => ({
-                                ...prevClient,
-                                name: e.target.value
-                            }))
-                        }
+                        onChange={handleInputChange}
                     />
                     <Input
                         label="Apellido:"
                         type="text"
                         name="lastName"
                         value={newClient.lastName}
-                        onChange={(e) =>
-                            setNewClient((prevClient) => ({
-                                ...prevClient,
-                                lastName: e.target.value
-                            }))
-                        }
+                        onChange={handleInputChange}
                     />
                     <Input
                         label="Dirección:"
                         type="text"
                         name="address"
                         value={newClient.address}
-                        onChange={(e) =>
-                            setNewClient((prevClient) => ({
-                                ...prevClient,
-                                address: e.target.value
-                            }))
-                        }
+                        onChange={handleInputChange}
                     />
                     <Input
                         label="Fecha de nacimiento:"
                         type="date"
                         name="birthDay"
-                        value={newClient.birthDay.toISOString().split('T')[0]}
-                        onChange={(e) =>
-                            setNewClient((prevClient) => ({
-                                ...prevClient,
-                                birthDay: new Date(e.target.value)
-                            }))
-                        }
+                        value={newClient.birthDay}
+                        onChange={handleInputChange}
                     />
                     <Input
                         label="Teléfono:"
                         type="text"
                         name="phone"
                         value={newClient.phone}
-                        onChange={(e) =>
-                            setNewClient((prevClient) => ({
-                                ...prevClient,
-                                phone: e.target.value
-                            }))
-                        }
+                        onChange={handleInputChange}
                     />
                     <SelectInput
                         label="País:"
