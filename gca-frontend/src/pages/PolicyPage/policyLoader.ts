@@ -1,7 +1,15 @@
 import type { Params } from 'react-router-dom';
 import { Policy } from '../../types/policy';
 // TEST
-import { policy1 } from '../../testData';
+const policy1: Policy = {
+    id: 1,
+    startDate: new Date('1982-03-10'),
+    endDate: new Date('1982-04-10'),
+    productName: 'A todo riesgo',
+    companyName: 'Sancor Seguros',
+    branchName: '200',
+    clientId: 5
+};
 
 interface LoaderArgs {
     params: Params;
