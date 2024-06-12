@@ -9,14 +9,14 @@ export default function ClientList({ clients }: ClientListProps) {
     let renderedItems;
     if (clients) {
         renderedItems = clients.map((item) => {
-            const { name, lastName, id } = item;
+            const { name, lastName, clientId } = item;
             return (
                 <ListItem
                     hasBorderBottom={false}
-                    key={id}
+                    key={clientId}
                     label={name + ' ' + lastName}
                     buttonLabel="Detalles"
-                    to={`/client/${id}`}
+                    to={`/client/${clientId}`}
                 />
             );
         });

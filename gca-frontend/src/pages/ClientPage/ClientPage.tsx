@@ -11,7 +11,11 @@ import { ClientLoaderResults } from './loaders/clientLoader';
 export default function ClientPage() {
     const { client, policies } = useData<ClientLoaderResults>();
 
-    const { id, name, lastName, address, birthDay, phone, country } = client;
+    const { clientId, name, lastName, address, birthDay, phone, country } =
+        client;
+
+    const formattedBirthDay =
+        typeof birthDay === 'string' ? new Date(birthDay) : birthDay;
 
     return (
         <Container isMain>
@@ -20,14 +24,16 @@ export default function ClientPage() {
                     <ButtonHeader
                         label={name + ' ' + lastName}
                         buttonText="Editar Cliente"
-                        to={`/client/${id}/edit`}
+                        to={`/client/${clientId}/edit`}
                     />
                     <div className="px-1">
                         <ListDiv hasBorderBottom label="Dirección:">
                             {address || 'No disponible'}
                         </ListDiv>
                         <ListDiv hasBorderBottom label="Fecha de nacimiento:">
-                            {birthDay.toLocaleDateString() || 'No disponible'}
+                            {formattedBirthDay
+                                ? formattedBirthDay.toLocaleDateString()
+                                : 'No disponible'}
                         </ListDiv>
                         <ListDiv hasBorderBottom label="Teléfono:">
                             {phone || 'No disponible'}
@@ -42,10 +48,13 @@ export default function ClientPage() {
                     <ButtonHeader
                         label="Polizas"
                         buttonText="Agregar Poliza"
-                        to={`/client/${id}/policy-add`}
+                        to={`/client/${clientId}/policy-add`}
                         classNames="mb-4"
                     />
-                    <PolicyList clientId={client.id} policies={policies} />
+                    <PolicyList
+                        clientId={client.clientId}
+                        policies={policies}
+                    />
                 </div>
             </Container>
         </Container>
