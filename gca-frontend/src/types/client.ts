@@ -1,12 +1,14 @@
+import { ClientPagePolicy } from './policy';
+
 export interface Client {
-    id: number;
+    clientId: number;
     name: string;
     lastName: string;
     address: string;
-    birthDay: Date;
+    birthDay: string;
     phone: string;
     country: string;
-    userId: number;
+    fk_userID: number;
 }
 
 export interface AddableClient {
@@ -14,6 +16,17 @@ export interface AddableClient {
     lastName: string;
     address: string;
     birthDay: string;
+    phone: string;
+    country: string;
+    fk_userID: number;
+}
+
+export interface EditableClient {
+    clientId: number;
+    name: string;
+    lastName: string;
+    address: string;
+    birthDay: Date;
     phone: string;
     country: string;
     fk_userID: number;
@@ -27,16 +40,12 @@ export interface GettableClient {
     birthDay: Date;
     phone: string;
     country: string;
-    userId: number;
-    policies: {
-        id: number;
-        branchName: string;
-        companyName: string;
-    }[];
+    fk_userID: number;
+    policies: ClientPagePolicy[];
 }
 
 export interface HomePageClient {
-    id: number;
+    clientId: number;
     name: string;
     lastName: string;
 }

@@ -1,6 +1,27 @@
 import ListItem from '../../../components/ListItem';
-import { client1, client2 } from '../../../testData';
 import type { Client } from '../../../types/client';
+
+const client1: Client = {
+    clientId: 1,
+    name: 'John',
+    lastName: 'Doe',
+    address: '123 Main St',
+    birthDay: '1990-01-01',
+    phone: '+1234567890',
+    country: 'Estados Unidos',
+    fk_userID: 123
+};
+
+const client2: Client = {
+    clientId: 2,
+    name: 'Alice',
+    lastName: 'Smith',
+    address: '456 Elm St',
+    birthDay: '1985-05-15',
+    phone: '+1987654321',
+    country: 'Canada',
+    fk_userID: 456
+};
 
 interface FeaturedListProps {
     text: string;
@@ -26,10 +47,10 @@ export default function FeaturedList() {
             return (
                 <ListItem
                     hasBorderBottom={false}
-                    key={client.id}
+                    key={client.clientId}
                     label={text}
                     buttonLabel="Ir al cliente"
-                    to={`/client/${client.id}`}
+                    to={`/client/${client.clientId}`}
                 />
             );
         });
