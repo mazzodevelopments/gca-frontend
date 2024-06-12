@@ -35,7 +35,7 @@ const AuthProvider: React.FC<PropsWithChildren<object>> = ({ children }) => {
     const login = async (username: string, password: string) => {
         try {
             const response = await axios.post(
-                'http://192.168.1.23:5001/login',
+                'http://192.168.1.23:3000/login',
                 {
                     username,
                     password
