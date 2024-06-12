@@ -13,10 +13,10 @@ export interface AddableClient {
     name: string;
     lastName: string;
     address: string;
-    birthDay: Date;
+    birthDay: string;
     phone: string;
     country: string;
-    userId: number;
+    fk_userID: number;
 }
 
 export interface GettableClient {
