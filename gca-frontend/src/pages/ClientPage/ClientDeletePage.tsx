@@ -15,7 +15,7 @@ export default function ClientDeletePage() {
 
     const handleDelete = async () => {
         try {
-            await deleteClient(client.id);
+            await deleteClient(client.clientId);
             navigate('/');
         } catch (e) {
             throw new Error('No se pudo eliminar el cliente.' + e);
@@ -35,7 +35,7 @@ export default function ClientDeletePage() {
                     <Button
                         label="Volver Atrás"
                         isAction
-                        to={`/client/${client.id}/edit`}
+                        to={`/client/${client.clientId}/edit`}
                     />
                     <Button
                         label="Confirmar"

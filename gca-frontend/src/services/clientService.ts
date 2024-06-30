@@ -3,12 +3,12 @@ import adaptClientPageData, {
     adaptClientData,
     adaptClientListData
 } from '../adapters/clientAdapter';
-import { AddableClient, Client } from '../types/client';
+import { SubmittableClient } from '../types/client';
 
 const URL = 'http://192.168.1.23:3000';
 
 export async function createClient(
-    client: AddableClient
+    client: SubmittableClient
 ): Promise<number | null> {
     try {
         const response = await axios.post(
@@ -27,7 +27,9 @@ export async function createClient(
     }
 }
 
-export async function updateClient(editedClient: Client): Promise<boolean> {
+export async function updateClient(
+    editedClient: SubmittableClient
+): Promise<boolean> {
     try {
         await axios.put(`${URL}/client`, editedClient, {
             headers: {

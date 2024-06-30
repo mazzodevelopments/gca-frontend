@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { EditClientLoaderResults } from './loaders/editClientLoader';
-import { Client } from '../../types/client';
+import { Client, SubmittableClient } from '../../types/client';
 import { updateClient } from '../../services/clientService';
 import { countries } from '../../utils/countries';
 
@@ -29,16 +29,16 @@ export default function ClientEditPage() {
     } = client;
 
     // INICIAR EL CLIENTE EDITADO CON LOS DATOS DEL CLIENTE
-    const [editedClient, setEditedClient] = useState<Client>({
+    const [editedClient, setEditedClient] = useState<Client>(() => ({
         clientId,
         name,
         lastName,
         address,
-        birthDay,
+        birthDay: new Date(birthDay), // Convertir a Date al inicializar
         phone,
         country,
         fk_userID
-    });
+    }));
 
     const navigate = useNavigate();
 
@@ -47,18 +47,32 @@ export default function ClientEditPage() {
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
         const { name, value } = e.target;
-        setEditedClient((editedClient) => ({
-            ...editedClient,
-            [name]: value
-        }));
+
+        // Handle different input types
+        if (name === 'birthDay') {
+            setEditedClient((editedClient) => ({
+                ...editedClient,
+                [name]: new Date(value) // Convertir la cadena de fecha a objeto Date
+            }));
+        } else {
+            setEditedClient((editedClient) => ({
+                ...editedClient,
+                [name]: value
+            }));
+        }
     };
 
     // FORM SUBMIT
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
+            // CONVERTIR FECHA A FORMATO ISO PARA MANDAR AL BACKEND
+            const clientToSubmit: SubmittableClient = {
+                ...editedClient,
+                birthDay: editedClient.birthDay.toISOString().slice(0, 10)
+            };
             // UPDATE THE CLIENT
-            const updated = await updateClient(editedClient);
+            const updated = await updateClient(clientToSubmit);
 
             if (updated) {
                 // NAVIGATE TO EDITED CLIENT
@@ -111,7 +125,13 @@ export default function ClientEditPage() {
                         label="Fecha de nacimiento:"
                         type="date"
                         name="birthDay"
-                        value={editedClient.birthDay}
+                        value={
+                            editedClient.birthDay instanceof Date
+                                ? editedClient.birthDay
+                                      .toISOString()
+                                      .slice(0, 10)
+                                : ''
+                        }
                         onChange={handleChange}
                     />
                     <Input

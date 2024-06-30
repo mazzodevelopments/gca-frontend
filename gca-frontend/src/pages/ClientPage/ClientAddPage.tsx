@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createClient } from '../../services/clientService';
-import { AddableClient } from '../../types/client';
+import { AddableClient, SubmittableClient } from '../../types/client';
 import { countries } from '../../utils/countries';
 import Input from '../../components/Input';
 import SelectInput from '../../components/SelectInput';
@@ -17,7 +17,7 @@ export default function ClientAddPage() {
         name: '',
         lastName: '',
         address: '',
-        birthDay: '',
+        birthDay: new Date(),
         phone: '',
         country: '',
         fk_userID: userId || 0
@@ -36,16 +36,29 @@ export default function ClientAddPage() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setNewClient((prevClient) => ({
-            ...prevClient,
-            [name]: value
-        }));
+
+        if (name === 'birthDay') {
+            setNewClient((prevClient) => ({
+                ...prevClient,
+                birthDay: new Date(value)
+            }));
+        } else {
+            setNewClient((prevClient) => ({
+                ...prevClient,
+                [name]: value
+            }));
+        }
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const newClientId = await createClient(newClient);
+            // CONVERTIR FECHA A FORMATO ISO PARA MANDAR AL BACKEND
+            const clientToSubmit: SubmittableClient = {
+                ...newClient,
+                birthDay: newClient.birthDay.toISOString().slice(0, 10)
+            };
+            const newClientId = await createClient(clientToSubmit);
             if (newClientId) {
                 navigate(`/client/${newClientId}`);
             }
@@ -90,7 +103,7 @@ export default function ClientAddPage() {
                         label="Fecha de nacimiento:"
                         type="date"
                         name="birthDay"
-                        value={newClient.birthDay}
+                        value={newClient.birthDay.toISOString().split('T')[0]}
                         onChange={handleInputChange}
                     />
                     <Input
