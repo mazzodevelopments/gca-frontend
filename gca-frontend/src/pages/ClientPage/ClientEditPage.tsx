@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { EditClientLoaderResults } from './loaders/editClientLoader';
@@ -28,7 +28,7 @@ export default function ClientEditPage() {
         fk_userID
     } = client;
 
-    // Inicializa el estado con todos los campos definidos
+    // INICIAR EL CLIENTE EDITADO CON LOS DATOS DEL CLIENTE
     const [editedClient, setEditedClient] = useState<Client>({
         clientId,
         name,
@@ -40,18 +40,9 @@ export default function ClientEditPage() {
         fk_userID
     });
 
-    console.log(editedClient);
-
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (client) {
-            // Actualiza el estado con los datos del cliente
-            setEditedClient(client);
-        }
-    }, [client]);
-
-    // Maneja el cambio en los campos del formulario
+    // FORM CHANGES
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
@@ -62,15 +53,15 @@ export default function ClientEditPage() {
         }));
     };
 
-    // Maneja el envío del formulario
+    // FORM SUBMIT
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            // Actualiza el cliente
+            // UPDATE THE CLIENT
             const updated = await updateClient(editedClient);
 
             if (updated) {
-                // Navega a la página del cliente actualizado
+                // NAVIGATE TO EDITED CLIENT
                 navigate(`/client/${editedClient.clientId}`);
             }
         } catch (error) {
@@ -78,7 +69,7 @@ export default function ClientEditPage() {
         }
     };
 
-    // Convierte la lista de países a formato de SelectInput de React
+    // FORMAT COUNTRY OPTIONS
     const countryOptions = countries.map((country) => ({
         label: country,
         value: country
