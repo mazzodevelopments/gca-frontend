@@ -1,0 +1,17 @@
+<!-- Modal -->
+<div class="modal fade show" tabindex="-1" role="dialog" style="display: block;" (click)="onDismissClick()">
+  <div class="modal-dialog" role="document" (click)="$event.stopPropagation()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <ng-content select="[modalTitle]"></ng-content>
+        </h5>
+        <button type="button" class="btn-close" (click)="onDismissClick()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade show"></div>

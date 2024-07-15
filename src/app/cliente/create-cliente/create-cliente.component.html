@@ -1,0 +1,6 @@
+<button (click)="showModal = true" class="btn btn-outline-primary">Nuevo Cliente</button>
+
+<app-modal *ngIf="showModal" (dismiss)="showModal = false">
+  <div modalTitle>Nuevo Cliente</div>
+  <app-form-cliente (submitCliente)="onSubmit($event)" [cliente]="cliente"></app-form-cliente>
+</app-modal>
