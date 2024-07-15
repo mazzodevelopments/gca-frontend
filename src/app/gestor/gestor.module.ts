@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 
 import {GestorRoutingModule} from './gestor-routing.module';
 import {HomeComponent} from './home/home.component';
-import {ModalComponent} from "../shared/modal/modal.component";
 import {ClienteModule} from "../cliente/cliente.module";
 
 
