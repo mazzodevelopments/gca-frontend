@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { GestorRoutingModule } from './gestor-routing.module';
-import { HomeComponent } from './home/home.component';
+import {GestorRoutingModule} from './gestor-routing.module';
+import {HomeComponent} from './home/home.component';
+import {ModalComponent} from "../shared/modal/modal.component";
+import {ClienteModule} from "../cliente/cliente.module";
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     CommonModule,
-    GestorRoutingModule
+    GestorRoutingModule,
+    ClienteModule
   ]
 })
-export class GestorModule { }
+export class GestorModule {
+}
