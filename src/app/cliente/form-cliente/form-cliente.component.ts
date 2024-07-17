@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Cliente} from '../cliente';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-form-cliente',
@@ -12,9 +12,12 @@ export class FormClienteComponent implements OnInit {
   clienteForm!: FormGroup;
   @Output() submitCliente = new EventEmitter();
 
+  constructor(private fb: FormBuilder) {
+  }
+
   ngOnInit(): void {
     const {nombre, apellido, direccion, fechaNacimiento, telefono, pais} = this.cliente;
-    this.clienteForm = new FormGroup({
+    this.clienteForm = this.fb.group({
       nombre: new FormControl(nombre, Validators.required),
       apellido: new FormControl(apellido, Validators.required),
       direccion: new FormControl(direccion, Validators.required),

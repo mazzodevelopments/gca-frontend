@@ -11,7 +11,15 @@ import {Router} from "@angular/router";
 export class CreateClienteComponent implements OnInit {
   showModal = false;
 
-  cliente!: Cliente;
+  cliente: Cliente = {
+    id: '',
+    nombre: '',
+    apellido: '',
+    direccion: '',
+    fechaNacimiento: new Date(),
+    telefono: '',
+    pais: ''
+  };
 
   constructor(private router: Router, private location: Location) {
   }
