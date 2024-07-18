@@ -1,9 +1,11 @@
 <div class="mb-3">
   <label class="form-label">{{ label }}</label>
 
-  <input class="form-control" *ngIf="controlType === 'input'" [type]="inputType" [formControl]="control"/>
-  <textarea class="form-control" *ngIf="controlType === 'textarea'" [formControl]="control"></textarea>
-  <input *ngIf="controlType === 'date'" type="date" [formControl]="control"/>
+  <input class="form-control" *ngIf="controlType === 'input'" [type]="inputType" placeholder="{{placeholder}}"
+         [formControl]="control"/>
+  <textarea class="form-control" *ngIf="controlType === 'textarea'" [formControl]="control"
+            placeholder="{{placeholder}}"></textarea>
+  <input *ngIf="controlType === 'date'" type="date" [formControl]="control" placeholder="{{placeholder}}"/>
 
   <!--  Validations-->
   <div *ngIf="showErrors()" class="form-text text-danger">
