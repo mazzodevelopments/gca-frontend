@@ -1,4 +1,4 @@
-<div class="container my-4">
+<div class="container mb-4">
   <form [formGroup]="searchForm" class="mb-4">
     <app-input
       type="text"
@@ -7,7 +7,15 @@
     ></app-input>
   </form>
 
-  <div class="list-group">
+  <!-- Loader -->
+  <div *ngIf="loading">
+    <div class="d-flex align-items-center">
+      <h6 role="tab">Loading...</h6>
+      <div class="spinner-border ms-auto text-primary" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading" class="list-group">
     <a *ngFor="let client of filteredClientes"
        [routerLink]="[client.id]"
        class="list-group-item d-flex justify-content-between align-items-center border rounded-3 mb-2 text-decoration-none">
