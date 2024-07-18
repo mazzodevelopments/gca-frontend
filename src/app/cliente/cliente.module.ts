@@ -18,12 +18,14 @@ import {RouterLink} from "@angular/router";
     FormClienteComponent,
     DeleteClienteComponent,
     ShowClienteComponent,
-    SearchClientesComponent
+    SearchClientesComponent,
+    EditClienteComponent
   ],
   exports: [
     CreateClienteComponent,
     ShowClienteComponent,
-    SearchClientesComponent
+    SearchClientesComponent,
+    EditClienteComponent
   ],
   imports: [
     CommonModule,

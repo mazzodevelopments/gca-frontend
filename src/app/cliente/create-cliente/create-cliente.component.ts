@@ -21,7 +21,7 @@ export class CreateClienteComponent implements OnInit {
     pais: ''
   };
 
-  constructor(private router: Router, private location: Location) {
+  constructor() {
   }
 
   ngOnInit() {
