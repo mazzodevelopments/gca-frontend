@@ -20,6 +20,7 @@ export class ShowClienteComponent implements OnInit {
     telefono: '',
     pais: ''
   };
+  loading: boolean = true;
 
   constructor(private route: ActivatedRoute, private clienteService: ClienteService) {
   }
@@ -27,15 +28,16 @@ export class ShowClienteComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.clienteId = params.get('id');
-      if (this.clienteId) { // Verifica dentro de la suscripción
+      if (this.clienteId) {
         this.clienteService.getCliente(this.clienteId)
           .pipe(take(1))
           .subscribe(cliente => {
             this.cliente = cliente[0];
+            this.loading = false;
           });
       } else {
         console.error('Cliente ID no encontrado en la URL');
-        // Puedes redirigir a una página de error o mostrar un mensaje al usuario
+        this.loading = false;
       }
     });
   }
