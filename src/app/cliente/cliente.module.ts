@@ -8,6 +8,7 @@ import {ShowClienteComponent} from './show-cliente/show-cliente.component';
 import {SearchClientesComponent} from './search-clientes/search-clientes.component';
 import {SharedModule} from "../shared/shared.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {RouterLink} from "@angular/router";
 
 
 @NgModule({
@@ -20,12 +21,15 @@ import {ReactiveFormsModule} from "@angular/forms";
     SearchClientesComponent
   ],
   exports: [
-    CreateClienteComponent
+    CreateClienteComponent,
+    ShowClienteComponent,
+    SearchClientesComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ]
 })
 export class ClienteModule {
