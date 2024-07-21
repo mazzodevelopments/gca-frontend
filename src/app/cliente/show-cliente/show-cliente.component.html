@@ -2,51 +2,19 @@
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-8">
       <div class="bg-white border border-light rounded-3 shadow-sm p-4">
-        <!-- Skeleton -->
-        <ng-container *ngIf="loading">
-          <div class="placeholder-glow">
-            <div class="d-flex justify-content-between mb-4">
-              <h2 class="text-primary mb-0">
-                <span class="placeholder placeholder-lg bg-primary rounded-3"
-                      style="width: 200px; height: 24px;"></span>
-              </h2>
-              <div>
-                <span class="btn btn-secondary me-2 disabled placeholder bg-primary"
-                      style="width: 120px; height: 36px;"></span>
-                <span class="btn btn-secondary me-2 disabled placeholder bg-primary"
-                      style="width: 120px; height: 36px;"></span>
-                <span class="btn btn-danger disabled placeholder bg-primary" style="width: 120px; height: 36px;"></span>
-              </div>
-            </div>
-            <div *ngFor="let _ of [].constructor(4)" class="mb-3">
-              <div class="d-flex justify-content-between align-items-center">
-                <label class="form-label fw-bold">
-                  <span class="placeholder bg-primary rounded-3" style="width: 100px; height: 16px;"></span>
-                </label>
-                <p class="form-text mb-0">
-                  <span class="placeholder bg-primary rounded-3" style="width: 150px; height: 16px;"></span>
-                </p>
-              </div>
-            </div>
+        <div class="d-flex justify-content-between mb-4">
+          <h2 class="text-primary mb-0">{{ cliente.nombre }} {{ cliente.apellido }}</h2>
+          <div>
+            <a routerLink="/gestor" class="btn btn-secondary me-2">Volver a la lista</a>
+            <app-edit-cliente [cliente]="cliente"></app-edit-cliente>
+            <app-delete-cliente [cliente]="cliente"></app-delete-cliente>
           </div>
-        </ng-container>
-
-        <!-- Cliente -->
-        <ng-container *ngIf="!loading">
-          <div class="d-flex justify-content-between mb-4">
-            <h2 class="text-primary mb-0">{{ cliente.nombre }} {{ cliente.apellido }}</h2>
-            <div>
-              <a routerLink="/gestor" class="btn btn-secondary me-2">Volver a la lista</a>
-              <app-edit-cliente [cliente]="cliente"></app-edit-cliente>
-              <app-delete-cliente [cliente]="cliente"></app-delete-cliente>
-            </div>
-          </div>
-          <app-detail-item label="Dirección" [value]="cliente.direccion"></app-detail-item>
-          <app-detail-item label="Fecha de Nacimiento"
-                           [value]="cliente.fechaNacimiento | date: 'dd/MM/yyyy'"></app-detail-item>
-          <app-detail-item label="Teléfono" [value]="cliente.telefono"></app-detail-item>
-          <app-detail-item label="País" [value]="cliente.pais"></app-detail-item>
-        </ng-container>
+        </div>
+        <app-detail-item label="Dirección" [value]="cliente.direccion"></app-detail-item>
+        <app-detail-item label="Fecha de Nacimiento"
+                         [value]="cliente.fechaNacimiento | date: 'dd/MM/yyyy'"></app-detail-item>
+        <app-detail-item label="Teléfono" [value]="cliente.telefono"></app-detail-item>
+        <app-detail-item label="País" [value]="cliente.pais"></app-detail-item>
       </div>
     </div>
   </div>

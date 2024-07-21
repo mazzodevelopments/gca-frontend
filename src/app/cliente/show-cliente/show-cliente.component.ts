@@ -20,7 +20,6 @@ export class ShowClienteComponent implements OnInit {
     telefono: '',
     pais: ''
   };
-  loading: boolean = true;
 
   constructor(private route: ActivatedRoute, private clienteService: ClienteService) {
   }
@@ -33,11 +32,9 @@ export class ShowClienteComponent implements OnInit {
           .pipe(take(1))
           .subscribe(cliente => {
             this.cliente = cliente[0];
-            this.loading = false;
           });
       } else {
         console.error('Cliente ID no encontrado en la URL');
-        this.loading = false;
       }
     });
   }
