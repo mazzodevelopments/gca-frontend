@@ -38,7 +38,7 @@
             <div>
               <a routerLink="/gestor" class="btn btn-secondary me-2">Volver a la lista</a>
               <app-edit-cliente [cliente]="cliente"></app-edit-cliente>
-              <button class="btn btn-danger">Eliminar Cliente</button>
+              <app-delete-cliente [cliente]="cliente"></app-delete-cliente>
             </div>
           </div>
           <app-detail-item label="Dirección" [value]="cliente.direccion"></app-detail-item>
