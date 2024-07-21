@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 export class SearchClientesComponent implements OnInit {
   clientes: ClientesHomePageResponse[] = [];
   filteredClientes: ClientesHomePageResponse[] = [];
-  loading: boolean = true;
   searchForm: FormGroup = new FormGroup({
     term: new FormControl('')
   });
@@ -23,7 +22,6 @@ export class SearchClientesComponent implements OnInit {
     this.clienteService.getClientesHomePage().subscribe((clientes) => {
       this.clientes = clientes;
       this.filteredClientes = clientes;
-      this.loading = false;
     });
 
     this.searchForm.get('term')!.valueChanges.subscribe(term => {
