@@ -1,0 +1,12 @@
+<button (click)="showModal = true" class="btn btn-danger me-2">Eliminar</button>
+<app-modal *ngIf="showModal" (dismiss)="showModal = false">
+  <div modalTitle>Eliminar Cliente</div>
+  <div>
+    <p>¿Está seguro que desea eliminar la poliza:
+      <strong>{{ poliza.nombreRamo + ' | ' + poliza.nombreCompania }}</strong>?</p>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-secondary me-2" (click)="showModal = false">Cancelar</button>
+      <button class="btn btn-danger" (click)="deletePoliza()">Confirmar</button>
+    </div>
+  </div>
+</app-modal>

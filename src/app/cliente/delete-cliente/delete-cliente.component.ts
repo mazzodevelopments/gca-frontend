@@ -12,7 +12,10 @@ export class DeleteClienteComponent {
   @Input() cliente!: Cliente;
   showModal = false;
 
-  constructor(private clienteService: ClienteService, private router: Router) {
+  constructor(
+    private clienteService: ClienteService,
+    private router: Router
+  ) {
   }
 
   deleteCliente() {
