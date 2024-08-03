@@ -1,0 +1,5 @@
+<button (click)="showModal = true" class="btn btn-outline-primary">Nueva Poliza</button>
+<app-modal *ngIf="showModal" (dismiss)="showModal = false">
+  <div modalTitle>Nueva Poliza</div>
+  <app-form-poliza (submitPoliza)="onSubmit($event)" [poliza]="poliza"></app-form-poliza>
+</app-modal>
