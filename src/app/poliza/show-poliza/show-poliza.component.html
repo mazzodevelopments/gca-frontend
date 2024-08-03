@@ -1,0 +1,18 @@
+<div class="container-fluid p-4">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="p-4">
+        <div class="d-flex justify-content-between mb-4">
+          <h2 class="text-primary mb-0">{{ poliza.nombreRamo }} {{ poliza.nombreCompania }}</h2>
+          <div>
+            <a routerLink="/gestor" class="btn btn-secondary me-2">Volver a la lista</a>
+          </div>
+        </div>
+        <app-detail-item label="Nombre Producto" [value]="poliza.nombreProducto"></app-detail-item>
+        <app-detail-item label="Fecha Inicio" [value]="poliza.fechaInicio | date: 'dd/MM/yyyy'"></app-detail-item>
+        <app-detail-item label="Fecha Vencimiento"
+                         [value]="poliza.fechaVencimiento | date: 'dd/MM/yyyy'"></app-detail-item>
+      </div>
+    </div>
+  </div>
+</div>
