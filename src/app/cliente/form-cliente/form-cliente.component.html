@@ -1,32 +1,27 @@
 <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
   <app-input
     label="Nombre"
-    type="text"
     [control]="$any(clienteForm.controls['nombre'])"
   ></app-input>
   <app-input
     label="Apellido"
-    type="text"
     [control]="$any(clienteForm.controls['apellido'])"
   ></app-input>
   <app-input
     label="Dirección"
-    type="text"
     [control]="$any(clienteForm.controls['direccion'])"
   ></app-input>
   <app-input
     label="Fecha de Nacimiento"
-    inputType="date"
+    controlType="date"
     [control]="$any(clienteForm.controls['fechaNacimiento'])"
   ></app-input>
   <app-input
     label="Teléfono"
-    type="text"
     [control]="$any(clienteForm.controls['telefono'])"
   ></app-input>
   <app-input
     label="País"
-    type="text"
     [control]="$any(clienteForm.controls['pais'])"
   ></app-input>
   <div class="d-flex justify-content-center">
