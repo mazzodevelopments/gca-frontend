@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {GestorRoutingModule} from './gestor-routing.module';
 import {HomeComponent} from './home/home.component';
 import {ClienteModule} from "../cliente/cliente.module";
+import {PolizaModule} from "../poliza/poliza.module";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {ClienteModule} from "../cliente/cliente.module";
   imports: [
     CommonModule,
     GestorRoutingModule,
-    ClienteModule
+    ClienteModule,
+    PolizaModule
   ]
 })
 export class GestorModule {

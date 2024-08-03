@@ -33,4 +33,12 @@ export class ClienteService {
   getCliente(id: string) {
     return this.http.get<Cliente[]>('/api/client');
   }
+
+  editCliente(cliente: Cliente) {
+    // TODO
+  }
+
+  deleteCliente(id: string) {
+    // TODO
+  }
 }
