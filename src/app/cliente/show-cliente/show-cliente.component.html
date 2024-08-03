@@ -1,7 +1,7 @@
 <div class="container-fluid p-4">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-10 col-lg-8">
-      <div class="bg-white border border-light rounded-3 shadow-sm p-4">
+    <div class="col-12">
+      <div class="p-4">
         <div class="d-flex justify-content-between mb-4">
           <h2 class="text-primary mb-0">{{ cliente.nombre }} {{ cliente.apellido }}</h2>
           <div>
@@ -15,6 +15,23 @@
                          [value]="cliente.fechaNacimiento | date: 'dd/MM/yyyy'"></app-detail-item>
         <app-detail-item label="Teléfono" [value]="cliente.telefono"></app-detail-item>
         <app-detail-item label="País" [value]="cliente.pais"></app-detail-item>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-4">
+    <div class="col-12">
+      <div>
+        <h3 class="text-primary mb-4">Pólizas</h3>
+        <div class="list-group">
+          <a *ngFor="let poliza of polizas"
+             [routerLink]="'/'+[poliza.id]"
+             class="list-group-item d-flex justify-content-between align-items-center border rounded-3 mb-2 text-decoration-none">
+            <div>
+              <h6 class="mb-1">{{ poliza.nombreRamo }} {{ poliza.nombreCompania }}</h6>
+            </div>
+            <span class="btn btn-primary btn-sm rounded-3">Ver detalles</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
