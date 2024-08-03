@@ -1,0 +1,27 @@
+<form [formGroup]="polizaForm" (ngSubmit)="onSubmit()">
+  <app-input
+    label="Fecha Inicio"
+    controlType="date"
+    [control]="$any(polizaForm.controls['fechaInicio'])"
+  ></app-input>
+  <app-input
+    label="Fecha Vencimiento"
+    controlType="date"
+    [control]="$any(polizaForm.controls['fechaVencimiento'])"
+  ></app-input>
+  <app-input
+    label="Nombre Producto"
+    [control]="$any(polizaForm.controls['nombreProducto'])"
+  ></app-input>
+  <app-input
+    label="Nombre Compania"
+    [control]="$any(polizaForm.controls['nombreCompania'])"
+  ></app-input>
+  <app-input
+    label="Nombre Ramo"
+    [control]="$any(polizaForm.controls['nombreRamo'])"
+  ></app-input>
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-primary">Guardar</button>
+  </div>
+</form>
