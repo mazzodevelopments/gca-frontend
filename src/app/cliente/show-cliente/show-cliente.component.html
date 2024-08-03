@@ -21,7 +21,10 @@
   <div class="row justify-content-center mt-4">
     <div class="col-12">
       <div>
-        <h3 class="text-primary mb-4">Pólizas</h3>
+        <div class="d-flex justify-content-between align-items-center">
+          <h3 class="text-primary mb-4">Pólizas</h3>
+          <app-create-poliza></app-create-poliza>
+        </div>
         <div class="list-group">
           <a *ngFor="let poliza of polizas"
              [routerLink]="['/gestor', clienteId, 'poliza', poliza.id]"

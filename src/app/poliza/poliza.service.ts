@@ -120,7 +120,8 @@ export class PolizaService {
     // TODO
   }
 
-  deletePoliza() {
-    //TODO
+  deletePoliza(polizaId: string) {
+    console.log(polizaId);
+    // TODO
   }
 }

@@ -9,6 +9,7 @@ import {SearchClientesComponent} from './search-clientes/search-clientes.compone
 import {SharedModule} from "../shared/shared.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
+import {PolizaModule} from "../poliza/poliza.module";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {RouterLink} from "@angular/router";
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    PolizaModule
   ]
 })
 export class ClienteModule {

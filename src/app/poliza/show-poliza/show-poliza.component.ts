@@ -9,7 +9,7 @@ import {PolizaService} from "../poliza.service";
   styleUrl: './show-poliza.component.css'
 })
 export class ShowPolizaComponent implements OnInit {
-  clientId: string | null = null;
+  clienteId: string | null = null;
   polizaId: string | null = null;
   poliza: Poliza = {
     id: '',
@@ -30,7 +30,7 @@ export class ShowPolizaComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.polizaId = params.get('polizaId');
-      this.clientId = params.get('clientId');
+      this.clienteId = params.get('clientId');
       if (this.polizaId) {
         this.poliza = this.polizaService.getPoliza();
       } else {
