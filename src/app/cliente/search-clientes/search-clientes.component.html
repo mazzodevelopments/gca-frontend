@@ -2,7 +2,7 @@
   <form [formGroup]="searchForm" class="mb-4">
     <app-input
       type="text"
-      [control]="$any(searchForm.controls?.['term'])"
+      [control]="$any(searchForm.controls['term'])"
       placeholder="Buscar clientes"
     ></app-input>
   </form>
@@ -11,7 +11,7 @@
        [routerLink]="[client.id]"
        class="list-group-item d-flex justify-content-between align-items-center border rounded-3 mb-2 text-decoration-none">
       <div>
-        <h6 class="mb-1">{{ client.nombre }} {{ client.apellido }}</h6>
+        <h6 class="mb-1">{{ client.nombre + client.apellido }}</h6>
       </div>
       <span class="btn btn-primary btn-sm rounded-3">Ver detalles</span>
     </a>
