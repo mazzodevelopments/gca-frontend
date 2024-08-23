@@ -1,43 +1,28 @@
 <div class="mb-3">
   <label class="form-label">{{ label }}</label>
 
-  <input class="form-control" *ngIf="controlType === 'input'" placeholder="{{placeholder}}"
-         [formControl]="control"/>
+  <input class="form-control" *ngIf="controlType === 'input'" placeholder="{{placeholder}}" [formControl]="control"/>
   <textarea class="form-control" *ngIf="controlType === 'textarea'" [formControl]="control"
             placeholder="{{placeholder}}"></textarea>
   <input class="form-control" *ngIf="controlType === 'date'" type="date" [formControl]="control"
          placeholder="{{placeholder}}"/>
 
-  <!--  Validations-->
+  <!-- Validations -->
   <div *ngIf="showErrors()" class="form-text text-danger">
-    <p *ngIf="control.errors?.['required']">
-      Value is required
-    </p>
-    <p *ngIf="control.errors?.['email']">
-      Enter a valid email
-    </p>
-    <p *ngIf="control.errors?.['minlength']">
-      Value entered is
-      {{ control.errors?.['minlength']?.actualLength }}
-      characters long, but it must be at least
-      {{ control.errors?.['minlength']?.requiredLength }}
-      characters
-    </p>
-    <p *ngIf="control.errors?.['maxlength']">
-      Value entered is
-      {{ control.errors?.['maxlength']?.actualLength }}
-      characters long, but it cannot be longer than
-      {{ control.errors?.['maxlength']?.requiredLength }}
-      characters
-    </p>
-    <p *ngIf="control.errors?.['pattern']">
-      Invalid Format
-    </p>
-    <p *ngIf="control.errors?.['nonUniqueUsername']">
-      Username is taken
-    </p>
-    <p *ngIf="control.errors?.['noConnection']">
-      Can't tell if username is taken
-    </p>
+    <ng-container *ngIf="control.errors as errors">
+      <p *ngIf="errors['required']">Value is required</p>
+      <p *ngIf="errors['email']">Enter a valid email</p>
+      <p *ngIf="errors['minlength']">
+        Value entered is {{ errors['minlength']?.actualLength }} characters long, but it must be at
+        least {{ errors['minlength']?.requiredLength }} characters.
+      </p>
+      <p *ngIf="errors['maxlength']">
+        Value entered is {{ errors['maxlength']?.actualLength }} characters long, but it cannot be longer
+        than {{ errors['maxlength']?.requiredLength }} characters.
+      </p>
+      <p *ngIf="errors['pattern']">Invalid Format</p>
+      <p *ngIf="errors['nonUniqueUsername']">Username is taken</p>
+      <p *ngIf="errors['noConnection']">Can't tell if username is taken</p>
+    </ng-container>
   </div>
 </div>
