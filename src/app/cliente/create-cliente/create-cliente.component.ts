@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Cliente} from "../cliente";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-cliente',
@@ -19,7 +20,7 @@ export class CreateClienteComponent implements OnInit {
     pais: ''
   };
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -27,5 +28,9 @@ export class CreateClienteComponent implements OnInit {
 
   onSubmit(cliente: Cliente) {
     console.log(cliente);
+    // AL CREAR EL CLIENTE EL BACKEND VA A MANDAR ID DEL CLIENTE PARA REDIRIGIR
+    const id = '1'; // TEST DATA
+    // REDIRECT POST CREAR
+    this.router.navigateByUrl(`/gestor/${id}`)
   }
 }
