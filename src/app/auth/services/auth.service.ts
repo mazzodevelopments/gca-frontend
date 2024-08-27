@@ -36,7 +36,6 @@ interface SignedinResponse {
 export class AuthService {
 
   signedin$ = new BehaviorSubject<boolean | null>(null);
-  rootUrl = 'https://api.angular-email.com';
   username: string = '';
 
   constructor(private http: HttpClient) {
@@ -44,14 +43,14 @@ export class AuthService {
 
   usernameAvailable(username: string) {
     return this.http
-      .post<UsernameAvailableResponse>(`${this.rootUrl}/auth/username`, {
+      .post<UsernameAvailableResponse>(`/api/auth/username`, {
         username
       });
   }
 
   signup(credentials: SignupCredentials) {
     return this.http
-      .post<SignupResponse>(`${this.rootUrl}/auth/signup`, credentials)
+      .post<SignupResponse>(`/api/auth/signup`, credentials)
       .pipe(
         tap(({username}) => {
           this.signedin$.next(true);
@@ -62,7 +61,7 @@ export class AuthService {
 
   signin(credentials: SigninCredentials) {
     return this.http
-      .post<SigninResponse>(`${this.rootUrl}/auth/signin`, credentials)
+      .post<SigninResponse>(`/api/auth/signin`, credentials)
       .pipe(
         tap(({username}) => {
           this.signedin$.next(true);
@@ -73,7 +72,7 @@ export class AuthService {
 
   signout() {
     return this.http
-      .post(`${this.rootUrl}/auth/signout`, {})
+      .post(`/api/auth/signout`, {})
       .pipe(
         tap(() => {
           this.signedin$.next(false)
@@ -83,7 +82,7 @@ export class AuthService {
 
   checkAuth() {
     return this.http
-      .get<SignedinResponse>(`${this.rootUrl}/auth/signedin`)
+      .get<SignedinResponse>(`/api/auth/signedin`)
       .pipe(
         tap(({authenticated, username}) => {
           this.signedin$.next(authenticated);
