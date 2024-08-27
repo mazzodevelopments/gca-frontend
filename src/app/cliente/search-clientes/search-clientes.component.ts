@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ClienteService, ClientesHomePageResponse} from "../cliente.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search-clientes',

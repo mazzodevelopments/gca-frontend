@@ -1,25 +1,24 @@
 <div class="container-fluid p-4">
   <div class="row justify-content-center">
     <div class="col-12">
-      <div class="p-4">
-        <div class="d-flex justify-content-between mb-4">
-          <h2 class="text-primary mb-0">{{ cliente.nombre }} {{ cliente.apellido }}</h2>
-          <div>
-            <a routerLink="/gestor" class="btn btn-secondary me-2">Volver a la lista</a>
-            <app-edit-cliente [cliente]="cliente"></app-edit-cliente>
-            <app-delete-cliente [cliente]="cliente"></app-delete-cliente>
-          </div>
+      <div class="d-flex justify-content-between align-items-start mb-4">
+        <h2 class="text-primary mb-0">{{ cliente.nombre }} {{ cliente.apellido }}</h2>
+        <div class="d-flex justify-content-end">
+          <a routerLink="/gestor" class="btn btn-secondary me-2">Volver a la lista</a>
+          <app-edit-cliente [cliente]="cliente"></app-edit-cliente>
+          <app-delete-cliente [cliente]="cliente"></app-delete-cliente>
         </div>
-        <app-detail-item label="Dirección" [value]="cliente.direccion"></app-detail-item>
-        <app-detail-item label="Fecha de Nacimiento"
-                         [value]="cliente.fechaNacimiento | date: 'dd/MM/yyyy'"></app-detail-item>
-        <app-detail-item label="Teléfono" [value]="cliente.telefono"></app-detail-item>
-        <app-detail-item label="País" [value]="cliente.pais"></app-detail-item>
       </div>
-    </div>
+      <div class="p-0">
+      <app-detail-item label="Dirección" [value]="cliente.direccion"></app-detail-item>
+      <app-detail-item label="Fecha de Nacimiento"
+                       [value]="cliente.fechaNacimiento | date: 'dd/MM/yyyy'"></app-detail-item>
+      <app-detail-item label="Teléfono" [value]="cliente.telefono"></app-detail-item>
+      <app-detail-item label="País" [value]="cliente.pais"></app-detail-item>
+        </div>
   </div>
   <div class="row justify-content-center mt-4">
-    <div class="col-12">
+    <div class="col-12 p-0">
       <div>
         <div class="d-flex justify-content-between align-items-center">
           <h3 class="text-primary mb-4">Pólizas</h3>
